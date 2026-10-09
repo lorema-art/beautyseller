@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>수강생 상담 기록 | BEAUTYSELL</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#f7f5f1; --paper:#ffffff; --ink:#1d1b18; --sub:#5f5a52; --line:#e6e1d8;
+  --accent:#2f6b4f; --accent-soft:#e7f0ea; --warn:#9a5b13; --warn-soft:#fbf1e3; --row:#faf8f4;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#141412; --paper:#1d1c1a; --ink:#f0ede7; --sub:#a9a398; --line:#33312d;
+    --accent:#7cc3a0; --accent-soft:#1f2d26; --warn:#e3a95c; --warn-soft:#2e2519; --row:#22211e;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{padding:48px 0 24px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}
+h1{font-size:26px;margin:8px 0 4px;letter-spacing:-.02em}
+.meta{color:var(--sub);font-size:14px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 0}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+.stat b{font-size:20px;margin-right:6px}
+.stat span{color:var(--sub);font-size:13px}
+.notice{margin:16px 0 0;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:24px 0 12px}
+.tools input,.tools select{font:inherit;font-size:14px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;
+  background:var(--paper);color:var(--ink)}
+.tools input{flex:1;min-width:180px}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--sub);letter-spacing:.04em;background:var(--row);position:sticky;top:0;cursor:pointer;user-select:none;white-space:nowrap}
+th[data-sort]::after{content:" ↕";opacity:.4}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even) td{background:var(--row)}
+td.name{font-weight:700;white-space:nowrap}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.who{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:2px 8px;white-space:nowrap}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.links a{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;color:var(--accent);
+  border:1px solid var(--accent-soft);background:var(--accent-soft);border-radius:8px;padding:3px 9px;font-variant-numeric:tabular-nums}
+.links a:hover{border-color:var(--accent)}
+.links a.new{background:var(--accent);color:var(--paper)}
+td.sum{color:var(--sub);font-size:14px;min-width:260px}
+.empty{padding:28px;text-align:center;color:var(--sub)}
+footer{padding:28px 0 48px;color:var(--sub);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">BEAUTYSELL 코치용</div>
+  <h1>수강생 상담 기록</h1>
+  <div class="meta">수강생별 상담 리포트 링크 모음 · 새 리포트가 올라가면 이 표에도 함께 추가됩니다</div>
+  <div class="stats">
+    <div class="stat"><b id="sPeople">0</b><span>수강생</span></div>
+    <div class="stat"><b id="sReports">0</b><span>상담 리포트</span></div>
+    <div class="stat"><b id="sLast">-</b><span>마지막 상담일</span></div>
+  </div>
+  <div class="notice">수강생 개인 상담 자료입니다. 이 주소는 외부에 공유하지 말아 주세요.</div>
+</header>
+
+<div class="tools">
+  <input id="q" type="search" placeholder="이름이나 내용으로 찾기">
+  <select id="by"><option value="">상담자 전체</option></select>
+</div>
+
+<div class="sheet">
+  <table>
+    <thead><tr>
+      <th data-sort="name">수강생</th>
+      <th data-sort="by">상담자</th>
+      <th data-sort="count" style="text-align:center">횟수</th>
+      <th data-sort="last">최근 상담</th>
+      <th>상담 리포트 (최신순)</th>
+      <th>최근 상담 요약</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<footer>날짜를 누르면 그날 상담 리포트가 열립니다. 가장 최근 상담은 진한 색으로 표시됩니다.</footer>
+</div>
+
+<script id="data" type="application/json">
+[
+  {"name":"김재명","date":"2026-10-09","by":"뿌요 교육실장","url":"../kim-jaemyeong-yqaj/consult-261009/","summary":"주문 급감 원인(구매 수량 제한, 가격 관리 프로그램 꺼짐) 점검, 직접 전달 정산 지연 해결, 꼬리물기 실습. 숙제: 하루 10개 소싱·등록."},
+  {"name":"임충엽","date":"2026-10-09","by":"뿌요 교육실장","url":"../lim-chungyeop-esau/consult-261009/","summary":"출장 중 밀린 주문·취소 정리, 역마진 처리(발송지연+가격 인상), 소싱 복습. 숙제: 소싱 상품 5개."},
+  {"name":"허진구","date":"2026-10-09","by":"뿌요 교육실장","url":"../heo-jingu-rwpn/consult-261009/","summary":"첫 주문이 브랜드 판매 중지 요청 상품이라 상품을 내리고 주문 처리 방법을 정리."},
+  {"name":"조혜인","date":"2026-10-09","by":"뿌요 교육실장","url":"../jo-hyein-dfbs/consult-261009/","summary":"찾아 둔 베스트 상품 8개에서 꼬리물기를 시작하는 방법을 함께 연습."},
+  {"name":"이연정","date":"2026-10-09","by":"뿌요 교육실장","url":"../lee-yeonjeong-brwx/consult-261009/","summary":"소싱 속도는 빨라졌지만 안 봐도 되는 상품까지 보는 문제. 보는 범위를 줄이는 연습."},
+  {"name":"이은지","date":"2026-10-09","by":"메이븐","url":"../lee-eunji-eazq/consult-261009/","summary":"등록이 멈춘 한 주에도 주문 유지. 소싱처를 G마켓 밖으로 넓히고 시간을 나눠 쓰는 것이 핵심."}
+]
+</script>
+<script>
+var all=JSON.parse(document.getElementById('data').textContent);
+var people={};
+all.forEach(function(r){(people[r.name]=people[r.name]||[]).push(r)});
+var list=Object.keys(people).map(function(n){
+  var rs=people[n].sort(function(a,b){return b.date.localeCompare(a.date)});
+  return {name:n,reports:rs,last:rs[0].date,count:rs.length,by:rs[0].by,summary:rs[0].summary};
+});
+var sortKey='last',asc=false;
+function fmt(d){var p=d.split('-');return (+p[1])+'/'+(+p[2])}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var bySel=document.getElementById('by');
+Array.from(new Set(all.map(function(r){return r.by}))).forEach(function(b){
+  var o=document.createElement('option');o.value=b;o.textContent=b;bySel.appendChild(o)});
+function render(){
+  var q=document.getElementById('q').value.trim().toLowerCase(), b=bySel.value;
+  var rows=list.filter(function(p){
+    if(b && !p.reports.some(function(r){return r.by===b})) return false;
+    if(!q) return true;
+    return (p.name+' '+p.reports.map(function(r){return r.summary+' '+r.by}).join(' ')).toLowerCase().indexOf(q)>-1;
+  }).sort(function(x,y){
+    var a=x[sortKey],c=y[sortKey],v=typeof a==='number'?a-c:String(a).localeCompare(String(c),'ko');
+    if(v===0) v=x.name.localeCompare(y.name,'ko');
+    return asc?v:-v;
+  });
+  document.getElementById('rows').innerHTML=rows.length?rows.map(function(p){
+    return '<tr><td class="name">'+esc(p.name)+'</td><td><span class="who">'+esc(p.by)+'</span></td><td class="num">'+p.count+
+      '</td><td>'+esc(p.last)+'</td><td><div class="links">'+p.reports.map(function(r,i){
+        return '<a class="'+(i===0?'new':'')+'" href="'+esc(r.url)+'" target="_blank" rel="noopener" title="'+esc(r.by)+'">'+fmt(r.date)+'</a>'}).join('')+
+      '</div></td><td class="sum">'+esc(p.summary)+'</td></tr>'}).join('')
+    :'<tr><td colspan="6" class="empty">찾는 결과가 없습니다.</td></tr>';
+}
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){var k=th.dataset.sort;
+    if(sortKey===k) asc=!asc; else {sortKey=k;asc=(k==='name'||k==='by')}
+    render()})});
+document.getElementById('q').addEventListener('input',render);
+bySel.addEventListener('change',render);
+document.getElementById('sPeople').textContent=list.length;
+document.getElementById('sReports').textContent=all.length;
+document.getElementById('sLast').textContent=all.map(function(r){return r.date}).sort().pop().slice(5).replace('-','/');
+render();
+</script>
+</body>
+</html>

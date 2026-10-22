@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="2026년 10월 19일 뷰셀 주간 회의 내용을 정리한 리포트입니다.">
+<title>10-19 주간 회의 리포트 | BEAUTYSELL</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#f7f5f1; --paper:#ffffff; --ink:#1d1b18; --sub:#5f5a52; --line:#e6e1d8;
+  --accent:#2f6b4f; --accent-soft:#e7f0ea; --warn:#9a5b13; --warn-soft:#fbf1e3;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#141412; --paper:#1d1c1a; --ink:#f0ede7; --sub:#a9a398; --line:#33312d;
+    --accent:#7cc3a0; --accent-soft:#1f2d26; --warn:#e3a95c; --warn-soft:#2e2519;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 32px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}
+blockquote{margin:28px 0 8px;font-size:30px;line-height:1.35;font-weight:800;letter-spacing:-.02em}
+.q-by{color:var(--sub);font-size:14px}
+h1{font-size:22px;margin:40px 0 4px;letter-spacing:-.01em}
+.meta{color:var(--sub);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-size:26px;letter-spacing:-.02em}
+.stat span{color:var(--sub);font-size:13px}
+.notice{margin:24px 0 0;background:var(--warn-soft);color:var(--warn);border-radius:12px;
+  padding:12px 16px;font-size:14px;font-weight:600}
+section{padding:36px 0;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--sub);margin:0 0 20px}
+.cards{display:grid;gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h3{margin:0 0 6px;font-size:15px;color:var(--accent)}
+.card p{margin:0}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin:0 0 12px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+summary::-webkit-details-marker{display:none}
+.num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  font-weight:800;font-size:14px;display:grid;place-items:center;margin-top:2px}
+.st b{display:block;font-size:17px}
+.st em{display:block;font-style:normal;color:var(--sub);font-size:14px;margin-top:2px}
+.chev{margin-left:auto;color:var(--sub);transition:transform .2s;flex:none}
+details[open] .chev{transform:rotate(180deg)}
+.body{padding:0 20px 20px 62px}
+.body h4{margin:16px 0 4px;font-size:13px;color:var(--sub);letter-spacing:.04em}
+.body ul{margin:0;padding-left:18px}
+.body li{margin:4px 0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;
+  background:var(--warn-soft);color:var(--warn);margin-left:6px;vertical-align:2px}
+.toggle-all{background:none;border:1px solid var(--line);color:var(--sub);border-radius:99px;
+  padding:6px 14px;font:inherit;font-size:13px;cursor:pointer;margin-bottom:14px}
+.flow{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
+.flow div{background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700}
+.flow div.end{background:var(--warn-soft);color:var(--warn)}
+.flow i{align-self:center;color:var(--sub);font-style:normal}
+.day{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 4px}
+.day div{background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:10px 8px;text-align:center;font-size:13px;font-weight:700;line-height:1.4}
+.day div b{display:block;font-size:18px}
+.day div.etc{background:var(--warn-soft);color:var(--warn)}
+.todo{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.todo li{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px}
+.todo input{width:18px;height:18px;margin-top:4px;accent-color:var(--accent);flex:none}
+.todo b{display:block}
+.todo small{color:var(--sub);font-size:13px}
+.who{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);
+  border-radius:99px;padding:1px 8px;margin-left:4px}
+.next{background:var(--accent);color:#fff;border-radius:14px;padding:18px 20px}
+.next b{display:block;font-size:20px;letter-spacing:-.01em}
+.next span{opacity:.85;font-size:14px}
+@media (prefers-color-scheme: dark){.next{color:#10201a}}
+ol.qs{padding-left:20px;margin:0}
+ol.qs li{margin:8px 0}
+footer{padding:32px 0 56px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+@media (max-width:560px){
+  blockquote{font-size:24px}
+  .stats{gap:8px}.stat{padding:12px}.stat b{font-size:21px}
+  .body{padding:0 16px 18px 16px}
+  .day{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<body>
+<div class="wrap">
+
+
+<header>
+  <div class="eyebrow">BEAUTYSELL 회의 리포트</div>
+  <blockquote>“내가 일일이 가격 수정을<br>안 해도 되겠구나.”</blockquote>
+  <div class="q-by">가격관리 프로그램 장표를 두고 나온 말</div>
+
+  <h1>10월 19일 주간 회의 정리</h1>
+  <div class="meta">2026년 10월 19일 오전 11시 · 강의·라이브 행사 준비 점검 및 프로그램 시연 계획</div>
+
+  <div class="stats">
+    <div class="stat"><b>61분</b><span>회의 시간</span></div>
+    <div class="stat"><b>2명</b><span>확정된 2기 수강생</span></div>
+    <div class="stat"><b>9개</b><span>실행 항목</span></div>
+  </div>
+  <div class="notice">내부용 문서입니다. 외부 공유는 삼가 주세요.</div>
+</header>
+
+<section>
+  <h2>한눈에 보기</h2>
+  <p class="lead">다음 날 행사 준비를 점검한 회의입니다. 사례로 나올 수강생은 2명(2기)이 확정됐고, 장표에서 프로그램은 “자동으로 돌아가는 느낌”만 보여 주기로 했습니다. 장표에는 가격관리 프로그램만 넣고, 자동등록과 오늘의 할인은 현장에서 직접 시연합니다. 후반에는 라이브 선사입 방법과 무료 라이브에서 자주 나오는 질문을 정리했습니다.</p>
+  <div class="cards">
+    <div class="card"><h3>장표</h3><p>가격관리 프로그램은 같은 상품의 가격이 <b>시간대별로 바뀌는 장면</b>을 캡처해 등락폭이 보이게 합니다. 그 앞에 “최저가로 팔려면 원래 매일 가격을 손봐야 한다”는 설명을 넣습니다.</p></div>
+    <div class="card"><h3>현장</h3><p>자동등록과 오늘의 할인은 현장에서 시연합니다. 행사 당일 4시 이후 도착해 함께 미리 테스트하고, 오늘의 할인은 <b>마진 남는 상품까지</b> 보여 줄 수 있게 미리 확인합니다.</p></div>
+    <div class="card"><h3>다음</h3><p>소싱 프로그램은 다음 주 특강 때 배포합니다(이번 달 안). 이번 행사는 기존 준비대로 가고, <b>12월에는 새로운 구성으로 바꿉니다.</b></p></div>
+  </div>
+</section>
+
+<section>
+  <h2>안건별 정리</h2>
+  <p class="lead">항목을 누르면 세부 내용이 열립니다.</p>
+  <button class="toggle-all" type="button" onclick="toggleAll(this)">모두 펼치기</button>
+
+  <details>
+    <summary><span class="num">1</span><span class="st"><b>행사 참석 수강생</b><span class="tag">확인 필요</span><em>“원래 다섯 분을 구했었는데 세 분이 안 될 것 같다고.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>5명을 섭외했으나 3명이 어렵다고 해서 현재 <b>2명 확정</b>입니다(둘 다 2기). 오늘 추가 섭외를 더 해 봅니다. 한두 명만 돼도 괜찮다는 의견입니다.</li>
+        <li>확정된 분들의 <b>성함·연락처</b>를 전달하기로 했습니다.</li>
+        <li>한 분은 부산에서 올라오십니다. 7시까지 와 달라고 했고, 늦어도 8시까지는 오십니다.</li>
+        <li>1차로 이야기를 나눴고, 오늘 두 분 모두 <b>리허설을 한 번 더</b> 합니다.</li>
+        <li>사례 소개 때 수강 <b>시작 전·후 매출과 주문 건수</b>를 보여 주기로 했습니다.</li>
+        <li>참고: 현재 4기가 시작되는 시점입니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">2</span><span class="st"><b>장표의 프로그램 시연 구성</b><span class="tag">결정</span><em>“자동으로 구동이 되는 느낌? 그 정도만 보여도 괜찮을 것 같아요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>프로그램 녹화 영상을 넣었더니 용량이 커서 화질이 깨졌습니다. <b>프로그램별로 GIF로 만들어</b> 오늘 마무리합니다.</li>
+        <li>프로그램을 자세히 보여 줄 필요는 없고, 자동으로 돌아가는 느낌만 전달하면 됩니다.</li>
+        <li>그 밖에는 올리브영 관련 내용만 뺐고 크게 바뀐 건 없습니다.</li>
+        <li>‘한 시간만 해도 돈을 벌 수 없는 이유’ 장표 뒤에 프로그램별 장표 3장을 몰아 넣었었는데, 3장으로 설명이 될지 의문이 나왔습니다.</li>
+      </ul>
+      <h4>결정</h4>
+      <div class="flow"><div>장표: 가격관리 프로그램만</div><i>+</i><div>현장 시연: 자동등록 · 오늘의 할인</div></div>
+      <ul>
+        <li>현장 시연은 큰 문제 없을 것으로 보고, 미리 여러 번 테스트합니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">3</span><span class="st"><b>가격관리 프로그램: 시간대별 가격 변화를 보여 주기</b><span class="tag">중요</span><em>“앞에 설명이 있어야 뒤에 이 장면 보여줄 때 힘을 많이 받아요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>원래는 화면을 캡처해 위아래로 스크롤하며 가격이 바뀌는 걸 보여 주려 했습니다.</li>
+        <li>대신 화면 아래의 <b>변경 시각 부분을 확대</b>해 보여 주기로 했습니다. 예: 같은 제품이 9시 50분, 10시 50분, 11시 50분에 각각 가격이 바뀐 장면을 이어 붙입니다.</li>
+        <li>시간대마다 300원 오르고, 100원 내리고, 1,000원 오르는 식의 <b>등락폭</b>이 보이면, 보는 사람이 “내가 일일이 가격을 안 고쳐도 되겠구나” 하고 믿게 됩니다.</li>
+        <li>이 장면 앞에 <b>“최저가로 팔려면 원래는 매일 가격을 건드려 줘야 한다”</b>는 설명을 먼저 넣습니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">4</span><span class="st"><b>현장 시연: 자동등록과 오늘의 할인</b><em>“오늘의 할인에 뜬 제품이 마진 남는 것까지 보여주면 너무 좋긴 한데.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <h4>자동등록 프로그램</h4>
+      <ul>
+        <li>상세페이지에서 돌아가는 화면을 10~20초 정도 보여 주며 스크롤되는 모습을 시연합니다.</li>
+      </ul>
+      <h4>오늘의 할인</h4>
+      <ul>
+        <li>프로그램이 <b>1,000원 이상 가격 차이 나는 상품</b>을 최대한 끌어오도록 설정돼 있습니다. 가끔 1,000원이 안 남는 상품이 섞입니다.</li>
+        <li>상품을 누르면 판매가가 뜨고, ‘가격비교 보기’를 누르면 <b>카탈로그 최저가 기준으로 얼마 남는지</b> 표시됩니다.</li>
+        <li>행사 당일 미리 가서 마진이 실제로 남는 상품을 몇 개 확인해 둡니다.</li>
+      </ul>
+      <h4>당일 일정</h4>
+      <ul>
+        <li>4시 조금 넘어 도착 → 함께 프로그램 구동 테스트.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">5</span><span class="st"><b>소싱 프로그램 배포 시점</b><em>“원래 손으로 하던 걸 프로그래밍해서 더 편한데, 어렵다고 하시는 분들이 많으셔서.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>소싱 방식이 키워드 기반(꼬리물기)이라, 사람이 하던 키워드 찾기를 <b>프로그램이 대신 찾아 줍니다.</b> 사람은 대조해 보고 맞으면 등록만 하면 됩니다.</li>
+        <li>정확도는 <b>90% 이상</b>입니다. 현재 믿음 강사님이 사용 중입니다.</li>
+        <li>수강생에게는 아직 배포하지 않았습니다. 사람이 직접 하는 걸 더 권장하는 면도 있고, 이미 프로그램이 많아 어렵다고 느끼는 분들이 있어 간격을 두고 드리려는 것입니다.</li>
+        <li><b>이번 달 안, 다음 주쯤 특강 때 배포</b>할 예정입니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">6</span><span class="st"><b>라이브 선사입 방법</b><span class="tag">노하우</span><em>“라이브만 봐도 주에 100개 이상은 상품이 올라갈 수 있거든요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>지금 화장품은 <b>뷰티페스타</b> 중이라 할 만한 상품이 많습니다. 행사용으로 7시·8시 라이브 상품 두 개 정도를 준비해 둡니다. 라이브 때는 크게 할인해 최저가를 잡을 수 있습니다.</li>
+        <li>최저가 유지는 가격관리 프로그램이 내려 줍니다. 가격 확인 주기는 <b>50분이 최대 설정</b>이라 그대로 둡니다.</li>
+      </ul>
+      <div class="flow"><div>라이브 예정 상품 확인</div><i>→</i><div>카탈로그 있는지 확인 후 미리 등록</div><i>→</i><div>라이브 때 가장 싼 시점에 구매</div><i>→</i><div class="end">선사입 또는 반사입</div></div>
+      <ul>
+        <li>예고된 상품이 안 나오는 경우도 있어서, 그럴 때는 라이브에 들어가 보고 저렴하면 그 시간 안에 삽니다.</li>
+        <li>자본금이 넉넉하지 않으면 <b>반사입</b>으로 해도 됩니다. 라이브가 오늘 카카오, 다음 주 네이버 식으로 돌아서 선점할 기회가 계속 옵니다.</li>
+        <li>할인쿠폰 한도에 맞춰 <b>가장 싼 시점에 그 한도만큼의 수량만</b> 삽니다. 평균 10개 안팎, 많아야 50개 정도라 본사에서 대부분 보내 줍니다.</li>
+        <li>구매인증 이벤트는 소통 없이 댓글만 달아 두면 상품권·본품 등이 당첨되기도 합니다.</li>
+        <li>예시: 카카오머니 10% 할인을 적용해 개당 가격을 구하고 카탈로그와 비교합니다. 비싸면 바로 넘기고, 3박스 26,070원처럼 배송비를 포함해도 남으면 바로 삽니다.</li>
+        <li><b>무거운 상품</b>(물티슈 등)은 판매가에 비해 배송비가 커서 피합니다. 신발·의류도 빼고 전자제품·화장품·식품 위주로 봅니다.</li>
+        <li>라이브 알림을 걸어 두고 아침에 한 번, 컨설팅 사이 틈틈이 봅니다. 못 보면 다음 기회가 옵니다.</li>
+      </ul>
+      <h4>수강생에게 알려 주는 시점</h4>
+      <ul>
+        <li>1기는 라이브를 많이 활용하지만, 2·3기는 아직 맥락을 잡지 못한 분이 많습니다. 그래서 꼬리물기가 어느 정도 잡히고 <b>매출이 3만 원 정도 나온 분들</b>에게 알려 드립니다.</li>
+        <li>단톡방에서 카드 연회비를 걱정하는 분들도 있었습니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">7</span><span class="st"><b>무료 라이브에서 자주 나오는 질문</b><em>“컨설팅을 진짜 계속 해주느냐, 이것도 많이 물어보시는 것 같아요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>매번 나오는 질문: <b>지식재산권</b>, <b>치킨게임 아니냐</b>, 자동등록만 소개했는데 <b>소싱 프로그램도 주느냐</b>, <b>컨설팅을 정말 계속 해 주느냐</b>.</li>
+        <li>컨설팅을 많이 해 준다는 걸 증명할 방법으로, <b>실제 컨설팅 일정을 블러 처리해서 보여 주는 안</b>이 나왔습니다.</li>
+        <li>컨설팅이 많아 본인 스토어는 주로 새벽에 하루 2~4시간, 주 1~2회 정도 봅니다. 그래도 매출은 수강생들보다 잘 나옵니다.</li>
+        <li>시간이 한정적이라 위탁보다는 <b>사입으로 하고 주문 처리만</b> 하는 방향으로 가고 있습니다. 다른 참석자도 같은 방향으로 가기로 했습니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">8</span><span class="st"><b>이번 행사 이후 방향</b><span class="tag">12월</span><em>“사람들은 새롭고 신선한 걸 좋아하기 때문에.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>라이브 장표는 어색한 부분이 없어 그대로 둡니다. 진행도 많이 익숙해졌습니다.</li>
+        <li>이번까지는 기존에 준비한 대로 진행하고, <b>12월 행사에서는 바뀐 모습(피봇)</b>을 보여 주기로 했습니다.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2>실행 항목</h2>
+  <p class="lead">체크 표시는 이 브라우저에서만 저장됩니다.</p>
+  <ul class="todo">
+    <li><input type="checkbox" data-k="a1"><div><b>확정 수강생 2명 성함·연락처 전달, 추가 섭외 <span class="who">뷰셀</span></b><small>2기 · 부산에서 오시는 분 7~8시 도착</small></div></li>
+    <li><input type="checkbox" data-k="a2"><div><b>수강생 2명 리허설 <span class="who">뷰셀</span></b><small>오늘 한 번 더 · 수강 시작 전·후 매출과 주문 건수 자료 준비</small></div></li>
+    <li><input type="checkbox" data-k="a3"><div><b>프로그램 GIF 제작 마무리 <span class="who">뷰셀</span></b><small>고용량 영상이 깨지는 문제 해결용</small></div></li>
+    <li><input type="checkbox" data-k="a4"><div><b>가격관리 장표 수정 <span class="who">뷰셀</span></b><small>같은 상품의 시간대별 가격 변동 캡처·확대 + 앞에 ‘원래 매일 가격 수정 필요’ 설명</small></div></li>
+    <li><input type="checkbox" data-k="a5"><div><b>행사 당일 4시 이후 현장 시연 테스트 <span class="who">함께</span></b><small>자동등록 10~20초 시연 · 오늘의 할인</small></div></li>
+    <li><input type="checkbox" data-k="a6"><div><b>오늘의 할인에서 마진 남는 상품 미리 확인 <span class="who">뷰셀</span></b><small>가격비교 보기로 카탈로그 최저가 기준 마진 확인</small></div></li>
+    <li><input type="checkbox" data-k="a7"><div><b>7시·8시 라이브 상품 준비 <span class="who">뷰셀</span></b><small>뷰티페스타 상품 중 두 개 정도</small></div></li>
+    <li><input type="checkbox" data-k="a8"><div><b>컨설팅 일정 블러 캡처 준비 <span class="who">뷰셀</span></b><small>‘컨설팅 계속 해 주느냐’ 질문 대응용</small></div></li>
+    <li><input type="checkbox" data-k="a9"><div><b>소싱 프로그램 배포 <span class="who">뷰셀</span></b><small>다음 주 특강 때 · 이번 달 안</small></div></li>
+  </ul>
+</section>
+
+<footer>
+  이 리포트는 2026년 10월 19일 회의 녹음(플라우드 자동 전사)을 바탕으로 정리했습니다. 전사 품질상 일부 숫자와 이름이 부정확할 수 있습니다. 숫자는 회의 중 언급된 내용이며 별도로 검증하지 않았습니다.
+</footer>
+
+</div>
+<script>
+function toggleAll(btn){
+  var ds=document.querySelectorAll('details'), open=btn.dataset.open!=='1';
+  ds.forEach(function(d){d.open=open});
+  btn.dataset.open=open?'1':'0'; btn.textContent=open?'모두 접기':'모두 펼치기';
+}
+document.querySelectorAll('.todo input').forEach(function(c){
+  var key='weekly261019-'+c.dataset.k;
+  try{c.checked=localStorage.getItem(key)==='1'}catch(e){}
+  c.addEventListener('change',function(){try{localStorage.setItem(key,c.checked?'1':'0')}catch(e){}});
+});
+</script>
+</body>
+</html>

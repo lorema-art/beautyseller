@@ -56,6 +56,11 @@ figure{margin:18px 0 6px}
 figure button{all:unset;cursor:zoom-in;display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper)}
 figure button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 figure img{display:block;width:100%;height:auto}
+figure.clip video{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#000;aspect-ratio:2190/1052}
+.vtag{display:inline-block;font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:0 6px;margin-right:6px}
+.speed{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.speed button{font:600 13px var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 12px;cursor:pointer}
+.speed button[aria-pressed="true"]{background:var(--accent);color:var(--paper);border-color:var(--accent)}
 figcaption{font-size:13.5px;color:var(--muted);margin-top:6px}
 .callout{border-radius:8px;padding:12px 16px;margin:16px 0;max-width:72ch;font-size:15px}
 .callout strong{font-family:var(--display)}
@@ -139,7 +144,8 @@ html{scroll-behavior:smooth}
   <div class="eyebrow">BEAUTYSELL · 실습 자료</div>
   <h1>주문이 들어왔을 때, 발주처리 따라하기</h1>
   <p class="lead">신규 주문 확인부터 마진 판단, 셀러들의 수다 입고·배송요청, 배송비 충전까지 실제 원격 실습 화면을 그대로 따라가며 정리했습니다. 처음엔 낯설어도 한두 번만 해보면 금방 손에 익습니다.</p>
-  <p class="privacy">화면 속 스토어명, 고객 이름·연락처·주소, 주문번호, 개인 사서함 번호는 모두 가렸습니다.</p>
+  <div class="speed" role="group" aria-label="영상 재생 속도">영상 재생 속도 <button type="button" data-rate="1" aria-pressed="false">1배</button><button type="button" data-rate="1.5" aria-pressed="true">1.5배</button><button type="button" data-rate="2" aria-pressed="false">2배</button></div>
+  <p class="privacy">화면 속 스토어명, 고객 이름·연락처·주소, 주문번호, 개인 사서함 번호는 사진과 영상 모두에서 가렸습니다. 영상은 소리 없이 화면만 담았습니다.</p>
 </header>
 
 <section id="flow">
@@ -182,6 +188,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/01_excel_download.jpg" alt="스마트스토어 주문정보 다운받기 창, 비밀번호 입력" loading="lazy"></button>
   <figcaption>주문정보 다운받기 창. 비밀번호를 입력하고 다운로드합니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k01_order_download.mp4" poster="vid/k01_order_download.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>신규주문 → 전체 선택 → 엑셀다운 → 비밀번호 → 발주확인 (34초)</figcaption></figure>
 </section>
 
 <section id="s2">
@@ -194,6 +202,8 @@ html{scroll-behavior:smooth}
   <p>그다음 <b>상품명 열을 오름차순 정렬</b>합니다. 같은 상품이 여러 건 들어왔을 때 한데 모여서 한 번에 발주하기 쉬워집니다.</p>
   <figure><button type="button" data-zoom><img src="img/02_excel_clean.jpg" alt="필요한 열만 남긴 주문 엑셀" loading="lazy"></button>
   <figcaption>정리가 끝난 주문 엑셀. 고객 정보 칸은 가렸습니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k02_excel_clean.mp4" poster="vid/k02_excel_clean.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>안내 문구·필요 없는 열 지우기 → 상품명 오름차순 정렬 (1분 40초)</figcaption></figure>
   <div class="callout note"><strong>2주차에 더 편해집니다.</strong><p>필요한 정보만 앞으로 빼서 보는 정렬 설정은 2주차 강의에서 따로 알려드립니다. 지금은 손으로 지워도 충분합니다.</p></div>
 </section>
 
@@ -206,6 +216,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/03_ledger_paste.jpg" alt="판매장부에 주문 4건을 붙여넣은 화면" loading="lazy"></button>
   <figcaption>판매장부에 주문을 옮긴 상태. 이제 한 건씩 마진을 확인합니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k03_ledger.mp4" poster="vid/k03_ledger.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>엑셀에서 복사 → 판매장부 붙여넣기 → 서식만 붙여넣기 (48초)</figcaption></figure>
 </section>
 
 <section id="s4">
@@ -227,6 +239,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/04_naver_catalog.jpg" alt="네이버 가격비교 카탈로그의 수량별 구성 가격" loading="lazy"></button>
   <figcaption>네이버 카탈로그의 용량·수량별 가격. 내 판매 구성보다 저렴한 구성이 있는지 봅니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k04_naver.mp4" poster="vid/k04_naver.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>네이버 카탈로그에서 수량별 구성 가격 확인 (23초)</figcaption></figure>
   <div class="callout warn"><strong>묶음을 사서 나눠 보낼 때는 배송비를 더하세요.</strong><p>1개 주문에 2개 묶음을 사서 창고로 받은 뒤 고객에게 다시 보내면 <span class="num">3,000원</span> 정도 배송비가 한 번 더 듭니다. 개당 가격이 싸 보여도 배송비를 더하면 역마진이 되는 경우가 많습니다.</p></div>
 
   <h3>② 에누리 가격비교</h3>
@@ -238,6 +252,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/05_enuri.jpg" alt="에누리 가격비교 요약보기, 배송비 포함과 카드할인 켬" loading="lazy"></button>
   <figcaption>에누리 가격비교 창. 배송비 포함과 카드할인을 모두 켠 상태의 최저가를 봅니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k05_enuri.mp4" poster="vid/k05_enuri.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>에누리: 배송비 포함 → 파란 구성 → 카드할인 켜고 최저가 확인 (44초)</figcaption></figure>
 </section>
 
 <section id="cases">
@@ -257,6 +273,8 @@ html{scroll-behavior:smooth}
   <div class="callout tip"><strong>등록할 때 구성을 꼭 골라서 등록하세요.</strong><p>셀러들의 수다에서 상품을 등록할 때 처음 뜨는 구성(예: 4개 묶음)을 그대로 등록하면 마진이 안 남을 수 있습니다. 목록에 “낱개로 팔면 +○○원”처럼 마진이 남는 구성이 따로 표시되니, <b>원하는 구성을 눌러 바꾼 뒤</b> 등록하세요.</p></div>
   <figure><button type="button" data-zoom><img src="img/06_selsuda_hotdeal.jpg" alt="셀러들의 수다 상품 목록, 묶음 그대로와 낱개로 팔 때 마진 표시" loading="lazy"></button>
   <figcaption>셀러들의 수다 목록. “묶음 그대로 −78,944원 / 낱개로 팔면 +4,246원”처럼 구성별 마진이 다르게 나옵니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k06_selsuda.mp4" poster="vid/k06_selsuda.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>셀러들의 수다에서 낱개/묶음 마진 확인 (15초)</figcaption></figure>
 </section>
 
 <section id="s5">
@@ -270,6 +288,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/07_price_up.jpg" alt="스마트스토어 판매가 변경 창, 10,000원 인상" loading="lazy"></button>
   <figcaption>판매가 변경 창에서 10,000원 인상.</figcaption></figure>
+  <figure class="clip"><video src="vid/k07_price_up.mp4" poster="vid/k07_price_up.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>상품 선택 → 판매가 변경 → 10,000원 인상 (20초)</figcaption></figure>
 
   <h3>② 발송지연 처리</h3>
   <ol class="steps">
@@ -282,6 +302,8 @@ html{scroll-behavior:smooth}
   <figcaption>발주가 불가능한 주문을 체크한 상태.</figcaption></figure>
   <figure><button type="button" data-zoom><img src="img/09b_delay_date.jpg" alt="발송지연 처리 창, 사유 상품준비중, 발송기한 3개월 뒤" loading="lazy"></button>
   <figcaption>발송지연 처리 창. 사유와 발송기한을 정합니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k08_delay.mp4" poster="vid/k08_delay.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>발송지연 처리 → 발송기한 3개월 뒤 → 안내 문구 붙여넣기 (27초)</figcaption></figure>
 
   <div class="copy">
     <button type="button" data-copy="delay-msg">복사</button>
@@ -339,6 +361,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/11_inbound.jpg" alt="입고 등록 입력 양식: 카탈로그명, 옵션, 수량, 공급가, 구매사이트, 메모" loading="lazy"></button>
   <figcaption>입고 등록 양식. 카탈로그명은 스토어 상품명과 똑같이 넣습니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k09_inbound.mp4" poster="vid/k09_inbound.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>입고 등록: 카탈로그명·수량·공급가·구매사이트·메모 입력 (1분 6초)</figcaption></figure>
 </section>
 
 <section id="s7">
@@ -346,6 +370,8 @@ html{scroll-behavior:smooth}
   <p>창고가 고객에게 보내려면 주문 정보를 받아야 합니다. <span class="ui">배송요청</span> 탭에서 한 건씩 손으로 입력할 수도 있지만, <b>주문이 적어도 엑셀 대량등록으로 하는 습관</b>을 들이세요. 주문이 갑자기 늘었을 때 그대로 쓸 수 있습니다.</p>
   <figure><button type="button" data-zoom><img src="img/12_ship_request.jpg" alt="배송요청 입력 양식과 엑셀로 여러 건 한번에 등록 버튼" loading="lazy"></button>
   <figcaption>배송요청 탭 아래쪽의 <b>엑셀로 여러 건 한번에 등록</b>을 씁니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k10a_ship_request.mp4" poster="vid/k10a_ship_request.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>배송요청 탭 → 엑셀로 여러 건 한번에 등록 → 템플릿 받기 (19초)</figcaption></figure>
   <ol class="steps">
     <li><span class="ui">엑셀로 여러 건 한번에 등록 → 1) 엑셀 템플릿 받기</span>를 누릅니다.</li>
     <li>템플릿에 주문 엑셀의 정보를 붙여넣습니다. <b>받는사람 · 카탈로그명 · 옵션 · 수량 · 연락처 · 주소 · 배송메시지</b> 순서입니다. 마우스보다 <span class="ui">Ctrl+C</span> / <span class="ui">Ctrl+V</span>가 빠릅니다.</li>
@@ -358,6 +384,8 @@ html{scroll-behavior:smooth}
   <figcaption>위: 배송요청 대량등록 템플릿 / 아래: 스마트스토어 주문 엑셀. 아래에서 복사해 위에 붙여넣습니다.</figcaption></figure>
   <figure><button type="button" data-zoom><img src="img/14_bulk_upload.jpg" alt="배송요청 대량등록 창에서 엑셀 파일 선택 후 등록" loading="lazy"></button>
   <figcaption>저장한 파일을 선택하면 ‘읽은 주문 1건’처럼 표시됩니다. 등록하기를 누르면 끝.</figcaption></figure>
+  <figure class="clip"><video src="vid/k10b_bulk_upload.mp4" poster="vid/k10b_bulk_upload.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>저장한 템플릿 파일 선택 → 등록하기 (19초)</figcaption></figure>
   <div class="callout tip"><strong>출고 시간</strong><p>창고는 오전 9시에 들어온 상품을 검수하고, <b>오후 3시 전까지 들어온 배송요청</b>은 당일 발송합니다. 단, 창고에 내 재고가 들어와 있어야 합니다. 출고되면 스토어에는 자동으로 발송처리됩니다.</p></div>
 </section>
 
@@ -373,6 +401,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/16_charge.jpg" alt="배송비 충전 사이트, 수량 1, 10,000원, 구매하기" loading="lazy"></button>
   <figcaption>충전 사이트. 1만 원 단위로 수량을 정하고 구매하기를 누릅니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k12_charge.mp4" poster="vid/k12_charge.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>충전 사이트에서 수량 선택 → 구매하기 → 로그인 (36초)</figcaption></figure>
   <div class="callout note"><strong>얼마나 넣어야 하나요?</strong><p>딱 맞게 넣어도 되고 여유 있게 넣어도 됩니다. 남은 금액은 원하면 확인 후 환불해 드리니, 너무 과하지 않게 적당히 충전하세요.</p></div>
 </section>
 
@@ -385,6 +415,8 @@ html{scroll-behavior:smooth}
   </ul>
   <figure><button type="button" data-zoom><img src="img/15_ledger_margin.jpg" alt="판매장부에 도매단가 14,000원, 배송비 3,000원, 판매처 사입을 입력해 마진이 계산된 화면" loading="lazy"></button>
   <figcaption>도매단가 14,000원 + 배송비 3,000원 입력 → 판매가 18,670원에서 수수료 1,250원을 빼고 마진 420원.</figcaption></figure>
+  <figure class="clip"><video src="vid/k11_ledger_margin.mp4" poster="vid/k11_ledger_margin.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>판매장부에 날짜·도매단가·배송비·판매처 입력 (40초)</figcaption></figure>
 </section>
 
 <section id="etc">
@@ -436,6 +468,12 @@ html{scroll-behavior:smooth}
       try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(e){fallback();}
     });
   });
+  var rate=1.5;
+  function applyRate(){document.querySelectorAll('video').forEach(function(v){v.playbackRate=rate;v.defaultPlaybackRate=rate;});}
+  document.querySelectorAll('video').forEach(function(v){v.addEventListener('play',function(){v.playbackRate=rate;});});
+  document.querySelectorAll('[data-rate]').forEach(function(b){b.addEventListener('click',function(){rate=parseFloat(b.dataset.rate);
+    document.querySelectorAll('[data-rate]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});applyRate();});});
+  applyRate();
   var KEY='beautysell-order-check';
   var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
   document.querySelectorAll('.check input').forEach(function(cb){

@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>발주처리 따라하기 | BEAUTYSELL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 좌측 고정 목차 + 본문 한 줄 흐름. 단계는 실제 작업 순서이므로 번호를 붙인다. 화면 캡처는 본문 폭 그대로, 클릭하면 확대. */
+:root{
+  --bg:#f6f7f5; --paper:#ffffff; --ink:#1d2421; --muted:#5d6862; --line:#dfe3df;
+  --accent:#0f7a52; --accent-soft:#e3f2ea; --warn:#b4471f; --warn-soft:#fbeae2; --note:#8a6a12; --note-soft:#fbf3dc;
+  --display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131816; --paper:#1b211e; --ink:#e7ece9; --muted:#9daaa3; --line:#2e3833;
+  --accent:#4fc893; --accent-soft:#1d3329; --warn:#f08c63; --warn-soft:#3a241b; --note:#e2bf5c; --note-soft:#332c17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131816; --paper:#1b211e; --ink:#e7ece9; --muted:#9daaa3; --line:#2e3833;
+  --accent:#4fc893; --accent-soft:#1d3329; --warn:#f08c63; --warn-soft:#3a241b; --note:#e2bf5c; --note-soft:#332c17; color-scheme:dark}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-top:40px;font-size:14px}
+nav.toc b{display:block;font-family:var(--display);font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 10px;border-radius:6px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);background:var(--accent-soft);outline:none}
+main{min-width:0;padding-top:40px}
+header.hero{padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.1em;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,42px);line-height:1.25;margin:8px 0 12px;text-wrap:balance}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.35;margin:0 0 6px;text-wrap:balance;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:var(--mono);font-size:15px;color:var(--accent);flex:none}
+h3{font-family:var(--display);font-weight:700;font-size:18px;margin:28px 0 6px}
+section{padding-block:44px 8px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+section:last-of-type{border-bottom:0}
+p{margin:8px 0;max-width:68ch}
+.sub{color:var(--muted);margin-top:0}
+ol.steps{margin:14px 0;padding-left:1.4em;display:grid;gap:6px;max-width:68ch}
+ol.steps li::marker{font-family:var(--mono);color:var(--accent)}
+ul{padding-left:1.2em;max-width:68ch}
+.ui{font-family:var(--body);font-weight:600;font-size:.9em;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:1px 7px;white-space:nowrap}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+figure{margin:18px 0 6px}
+figure button{all:unset;cursor:zoom-in;display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper)}
+figure button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:6px}
+.callout{border-radius:8px;padding:12px 16px;margin:16px 0;max-width:72ch;font-size:15px}
+.callout strong{font-family:var(--display)}
+.callout.tip{background:var(--accent-soft)}
+.callout.warn{background:var(--warn-soft)}
+.callout.warn strong{color:var(--warn)}
+.callout.note{background:var(--note-soft)}
+.callout.note strong{color:var(--note)}
+.callout p{margin:4px 0}
+/* 흐름도 */
+.flow{display:grid;gap:10px;margin:24px 0 8px;font-size:14.5px}
+.flow .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow .box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-weight:500}
+.flow .arrow{color:var(--muted)}
+.flow .branch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flow .lane{border-radius:10px;padding:12px;display:grid;gap:8px;align-content:start}
+.flow .lane.ok{background:var(--accent-soft)}
+.flow .lane.no{background:var(--warn-soft)}
+.flow .lane h4{margin:0;font-family:var(--display);font-size:14px}
+.flow .lane.ok h4{color:var(--accent)} .flow .lane.no h4{color:var(--warn)}
+.flow .lane .box{font-size:14px}
+/* 표 */
+.tbl{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--display);font-size:13px;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:1px 10px;white-space:nowrap}
+.pill.no{background:var(--warn-soft);color:var(--warn)} .pill.ok{background:var(--accent-soft);color:var(--accent)}
+/* 복사 블록 */
+.copy{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0;max-width:72ch}
+.copy pre{margin:0;white-space:pre-wrap;font-family:var(--body);font-size:15px;line-height:1.75}
+.copy button{position:absolute;top:10px;right:10px;font:600 13px var(--body);color:var(--accent);background:var(--accent-soft);border:0;border-radius:6px;padding:5px 10px;cursor:pointer}
+.copy button:focus-visible{outline:2px solid var(--accent)}
+/* 체크리스트 */
+.check{list-style:none;padding:0;display:grid;gap:8px;max-width:72ch}
+.check li{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.check input{margin-top:6px;accent-color:var(--accent);flex:none}
+.check label{cursor:pointer}
+/* 확대 보기 */
+dialog{border:0;padding:0;max-width:min(96vw,1800px);background:transparent}
+dialog::backdrop{background:rgba(0,0,0,.78)}
+dialog img{display:block;max-width:100%;max-height:92vh;border-radius:6px}
+.privacy{font-size:13px;color:var(--muted);margin-top:14px}
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{position:static;padding-top:24px}
+  nav.toc ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  main{padding-top:16px}
+}
+@media (max-width:520px){.flow .branch{grid-template-columns:1fr} nav.toc ol{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav class="toc" aria-label="목차">
+  <b>목차</b>
+  <ol>
+    <li><a href="#flow">전체 흐름</a></li>
+    <li><a href="#s1">1. 주문 엑셀 받기</a></li>
+    <li><a href="#s2">2. 엑셀 정리</a></li>
+    <li><a href="#s3">3. 판매장부 옮기기</a></li>
+    <li><a href="#s4">4. 마진 확인</a></li>
+    <li><a href="#cases">실제 판단 사례</a></li>
+    <li><a href="#s5">5. 발주 불가 처리</a></li>
+    <li><a href="#s6">6. 입고 등록</a></li>
+    <li><a href="#s7">7. 배송 요청</a></li>
+    <li><a href="#s8">8. 배송비 충전</a></li>
+    <li><a href="#s9">9. 장부 마무리</a></li>
+    <li><a href="#etc">판매중지 요청 대응</a></li>
+    <li><a href="#checklist">체크리스트</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">BEAUTYSELL · 실습 자료</div>
+  <h1>주문이 들어왔을 때, 발주처리 따라하기</h1>
+  <p class="lead">신규 주문 확인부터 마진 판단, 셀러들의 수다 입고·배송요청, 배송비 충전까지 실제 원격 실습 화면을 그대로 따라가며 정리했습니다. 처음엔 낯설어도 한두 번만 해보면 금방 손에 익습니다.</p>
+  <p class="privacy">화면 속 스토어명, 고객 이름·연락처·주소, 주문번호, 개인 사서함 번호는 모두 가렸습니다.</p>
+</header>
+
+<section id="flow">
+  <h2>전체 흐름</h2>
+  <p class="sub">주문 한 건은 마진이 남느냐 아니냐에 따라 두 갈래로 나뉩니다.</p>
+  <div class="flow" role="img" aria-label="신규 주문 → 엑셀 다운로드와 정리 → 판매장부 기록 → 마진 확인 후, 마진이 남으면 입고 등록·배송 요청·배송비 충전, 남지 않으면 판매가 1만 원 인상과 발송지연 처리">
+    <div class="row">
+      <span class="box">신규 주문 확인</span><span class="arrow">→</span>
+      <span class="box">엑셀 다운로드·정리</span><span class="arrow">→</span>
+      <span class="box">판매장부에 기록</span><span class="arrow">→</span>
+      <span class="box">네이버 → 에누리 마진 확인</span>
+    </div>
+    <div class="branch">
+      <div class="lane ok">
+        <h4>마진이 남는다 → 발주</h4>
+        <span class="box">상품 구매 (배송지 = 창고 + 내 사서함번호)</span>
+        <span class="box">셀러들의 수다 입고 등록</span>
+        <span class="box">배송요청 엑셀 대량등록</span>
+        <span class="box">배송비 예치금 충전</span>
+      </div>
+      <div class="lane no">
+        <h4>마진이 안 남는다 → 보류</h4>
+        <span class="box">스토어 판매가 1만 원 인상</span>
+        <span class="box">발송지연 처리 (최장 3개월 뒤)</span>
+        <span class="box">장부 ‘배송지연’ 탭으로 이동</span>
+        <span class="box">주말·월초 할인 때 다시 확인</span>
+      </div>
+    </div>
+  </div>
+  <div class="callout warn"><strong>가격 인상과 발송지연은 한 세트입니다.</strong><p>발주를 못 하는 주문은 가격만 올리고 끝내면 안 됩니다. 가격을 올려 추가 주문을 막고, 이미 들어온 주문은 반드시 발송지연 처리까지 해야 합니다.</p></div>
+</section>
+
+<section id="s1">
+  <h2><span class="n">01</span>신규 주문 엑셀로 받기</h2>
+  <ol class="steps">
+    <li>스마트스토어센터에서 <span class="ui">신규주문</span>을 누릅니다.</li>
+    <li>주문을 <b>전체 선택</b>하고 <span class="ui">엑셀다운</span>을 누릅니다.</li>
+    <li>엑셀 비밀번호는 <b>0</b> 또는 <b>1234</b>처럼 아주 간단하게 정합니다. 평소 쓰는 비밀번호가 아니라 잠깐 열어볼 용도라서 간단해도 됩니다.</li>
+    <li>다운로드 후 <span class="ui">발주확인</span>을 눌러 둡니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/01_excel_download.jpg" alt="스마트스토어 주문정보 다운받기 창, 비밀번호 입력" loading="lazy"></button>
+  <figcaption>주문정보 다운받기 창. 비밀번호를 입력하고 다운로드합니다.</figcaption></figure>
+</section>
+
+<section id="s2">
+  <h2><span class="n">02</span>엑셀에서 필요한 정보만 남기기</h2>
+  <p>엑셀을 열고 <span class="ui">편집 사용</span>을 누른 뒤, 맨 위 안내 문구와 필요 없는 열(아직 보내지도 않았으니 택배사 같은 칸)은 지웁니다. 남길 열은 아래 정도입니다.</p>
+  <ul>
+    <li>수취인명, 상품명, 옵션, 수량, 주문금액</li>
+    <li>수취인 연락처, 배송지 주소 (배송 보낼 때 필요)</li>
+  </ul>
+  <p>그다음 <b>상품명 열을 오름차순 정렬</b>합니다. 같은 상품이 여러 건 들어왔을 때 한데 모여서 한 번에 발주하기 쉬워집니다.</p>
+  <figure><button type="button" data-zoom><img src="img/02_excel_clean.jpg" alt="필요한 열만 남긴 주문 엑셀" loading="lazy"></button>
+  <figcaption>정리가 끝난 주문 엑셀. 고객 정보 칸은 가렸습니다.</figcaption></figure>
+  <div class="callout note"><strong>2주차에 더 편해집니다.</strong><p>필요한 정보만 앞으로 빼서 보는 정렬 설정은 2주차 강의에서 따로 알려드립니다. 지금은 손으로 지워도 충분합니다.</p></div>
+</section>
+
+<section id="s3">
+  <h2><span class="n">03</span>판매장부(구글 스프레드시트)에 옮기기</h2>
+  <ol class="steps">
+    <li>판매장부는 가능하면 <b>구글 스프레드시트</b>로 씁니다. 어느 컴퓨터에서든 열 수 있어 USB로 들고 다닐 필요가 없습니다.</li>
+    <li>엑셀에서 <b>수취인명 · 상품명 · 옵션 · 수량 · 주문금액</b>을 복사해 장부에 붙여넣습니다.</li>
+    <li>붙여넣으면 서식이 깨집니다. 아래쪽 빈 줄을 복사한 뒤 붙여넣은 칸을 선택하고 <span class="ui">선택하여 붙여넣기 → 서식만</span>을 고르면 원래 모양으로 돌아옵니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/03_ledger_paste.jpg" alt="판매장부에 주문 4건을 붙여넣은 화면" loading="lazy"></button>
+  <figcaption>판매장부에 주문을 옮긴 상태. 이제 한 건씩 마진을 확인합니다.</figcaption></figure>
+</section>
+
+<section id="s4">
+  <h2><span class="n">04</span>마진이 남는지 확인하기 (네이버 → 에누리)</h2>
+  <p class="sub">할인이 가장 많은 두 가격비교 사이트, 네이버 가격비교와 에누리를 봅니다. 에누리는 로딩이 오래 걸리니 <b>검색은 먼저 걸어두고</b> 네이버부터 봅니다.</p>
+
+  <h3>검색어 만드는 법</h3>
+  <ul>
+    <li>주문 상품명에서 <b>브랜드명부터 용량 숫자까지</b> 복사해 검색합니다. (예: “롯데칠성음료 게토레이 레몬 600”)</li>
+    <li>검색이 잘 안 되면 불필요한 단어를 빼고, <b>브랜드명 + 제품을 특정할 수 있는 성분·라인명</b> 하나 정도만 남깁니다.</li>
+    <li>마스크팩처럼 낱장 포장 제품은 매수(5매 등)까지 꼭 넣지 않아도 됩니다.</li>
+  </ul>
+
+  <h3>① 네이버 가격비교</h3>
+  <ol class="steps">
+    <li>검색 결과에서 <b>내가 등록한 카탈로그</b>를 엽니다. (상품명이 같아도 “5매×1개”와 “1매×5개”는 서로 다른 카탈로그일 수 있으니 내 카탈로그를 정확히 고릅니다.)</li>
+    <li>아래로 내려 <b>수량별 구성 가격</b>을 보고 내 판매 구성보다 더 싸게 살 수 있는 구성이 있는지 찾습니다.</li>
+    <li>여러 개 묶음은 개당 가격으로 나눠 봅니다. 암산이 어려우면 계산기를 쓰고, <b>뒷자리를 잘라내고</b> 나누면 훨씬 쉽습니다. (12,220원 → 12,000원 ÷ 2 = 개당 6,000원)</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/04_naver_catalog.jpg" alt="네이버 가격비교 카탈로그의 수량별 구성 가격" loading="lazy"></button>
+  <figcaption>네이버 카탈로그의 용량·수량별 가격. 내 판매 구성보다 저렴한 구성이 있는지 봅니다.</figcaption></figure>
+  <div class="callout warn"><strong>묶음을 사서 나눠 보낼 때는 배송비를 더하세요.</strong><p>1개 주문에 2개 묶음을 사서 창고로 받은 뒤 고객에게 다시 보내면 <span class="num">3,000원</span> 정도 배송비가 한 번 더 듭니다. 개당 가격이 싸 보여도 배송비를 더하면 역마진이 되는 경우가 많습니다.</p></div>
+
+  <h3>② 에누리 가격비교</h3>
+  <ol class="steps">
+    <li>검색 후 <span class="ui">배송비 포함</span>을 <b>반드시 먼저 켭니다.</b> 에누리는 무조건 이걸 켜고 봅니다.</li>
+    <li>상단 광고 영역을 지나 나오는 것이 에누리 카탈로그입니다. 구성 중 <b>파란색으로 표시된 것</b>이 현재 가장 저렴한 구성입니다.</li>
+    <li>그 구성의 가격을 누르면 오른쪽에 가격비교 창이 뜹니다. 여기서 <span class="ui">카드할인</span>을 켭니다.</li>
+    <li>카드할인을 켠 뒤의 최저가가 실제로 살 수 있는 가격입니다. 이 가격을 마진계산기에 넣어 마진이 남는지 확인합니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/05_enuri.jpg" alt="에누리 가격비교 요약보기, 배송비 포함과 카드할인 켬" loading="lazy"></button>
+  <figcaption>에누리 가격비교 창. 배송비 포함과 카드할인을 모두 켠 상태의 최저가를 봅니다.</figcaption></figure>
+</section>
+
+<section id="cases">
+  <h2>실제 판단 사례 (주문 4건)</h2>
+  <p class="sub">실습 날 들어온 주문 4건을 위 방법으로 확인한 결과입니다. 판매가와 최저가가 10~20원 차이여도 수수료를 떼면 마진이 남지 않습니다.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>상품</th><th>내 판매가</th><th>확인한 최저가</th><th>판단</th><th>이유</th></tr></thead>
+    <tbody>
+      <tr><td>게토레이 레몬 600ml 20개</td><td class="r">16,960원</td><td class="r">16,970원</td><td><span class="pill no">발주 불가</span></td><td>네이버에 더 싼 구성 없음, 에누리 최저가가 판매가보다 높음</td></tr>
+      <tr><td>메디힐 티트리 마스크 10매 4개</td><td class="r">35,140원</td><td class="r">10매당 약 1만 원</td><td><span class="pill no">발주 불가</span></td><td>10매당 8,780원 이하여야 하는데 시중가가 더 비쌈. 애초에 <b>1개짜리 구성</b>으로 등록했어야 마진이 남는 상품</td></tr>
+      <tr><td>오리온 황치즈칩 쿠키 256g</td><td class="r">6,240원</td><td class="r">6,260원</td><td><span class="pill no">발주 불가</span></td><td>네이버 2개 묶음 개당 6,000원이지만 재발송 배송비 3,000원을 더하면 역마진. 에누리도 판매가보다 높음</td></tr>
+      <tr><td>프리메라 비타티놀 마스크 5매</td><td class="r">18,670원</td><td class="r">20,110원</td><td><span class="pill ok">발주 진행</span></td><td>시중에서 사면 역마진이지만, 창고에 있던 재고(매입 14,000원 + 배송비 3,000원)로 보내면 마진이 남음</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout tip"><strong>등록할 때 구성을 꼭 골라서 등록하세요.</strong><p>셀러들의 수다에서 상품을 등록할 때 처음 뜨는 구성(예: 4개 묶음)을 그대로 등록하면 마진이 안 남을 수 있습니다. 목록에 “낱개로 팔면 +○○원”처럼 마진이 남는 구성이 따로 표시되니, <b>원하는 구성을 눌러 바꾼 뒤</b> 등록하세요.</p></div>
+  <figure><button type="button" data-zoom><img src="img/06_selsuda_hotdeal.jpg" alt="셀러들의 수다 상품 목록, 묶음 그대로와 낱개로 팔 때 마진 표시" loading="lazy"></button>
+  <figcaption>셀러들의 수다 목록. “묶음 그대로 −78,944원 / 낱개로 팔면 +4,246원”처럼 구성별 마진이 다르게 나옵니다.</figcaption></figure>
+</section>
+
+<section id="s5">
+  <h2><span class="n">05</span>마진이 안 남을 때: 가격 인상 + 발송지연</h2>
+
+  <h3>① 판매가 1만 원 올리기</h3>
+  <ol class="steps">
+    <li><span class="ui">상품관리 → 상품 조회/수정</span>에서 해당 상품을 체크합니다.</li>
+    <li><span class="ui">판매가 변경</span>을 누르고 <b>10,000원 / 인상</b>으로 바꾼 뒤 <span class="ui">변경</span>을 누릅니다.</li>
+    <li>가격을 올려 두면 같은 상품으로 손해 보는 주문이 더 들어오지 않습니다. 중간에 뜨는 안내 팝업은 무시해도 됩니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/07_price_up.jpg" alt="스마트스토어 판매가 변경 창, 10,000원 인상" loading="lazy"></button>
+  <figcaption>판매가 변경 창에서 10,000원 인상.</figcaption></figure>
+
+  <h3>② 발송지연 처리</h3>
+  <ol class="steps">
+    <li><span class="ui">판매관리 → 발주확인/발송관리</span>로 들어가 해당 주문을 찾습니다. 이름은 <b>구매자명이 아니라 수취인명</b>으로 찾으세요. 둘이 다를 수 있습니다.</li>
+    <li>주문을 체크하고 <span class="ui">발송지연 처리</span>를 누릅니다.</li>
+    <li>발송지연 사유는 <b>상품준비중</b>, 발송기한은 <b>주문일로부터 3개월 뒤 같은 날짜</b>로 정합니다. (예: 10월 28일 주문 → 다음 해 1월 28일)</li>
+    <li>상세 사유 칸에 아래 안내 문구를 붙여넣고 <span class="ui">확인</span>을 누릅니다. 목록에서 발송기한이 늘어났는지 확인합니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/08_delay_select.jpg" alt="발주확인/발송관리 주문 목록에서 두 건 선택" loading="lazy"></button>
+  <figcaption>발주가 불가능한 주문을 체크한 상태.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/09b_delay_date.jpg" alt="발송지연 처리 창, 사유 상품준비중, 발송기한 3개월 뒤" loading="lazy"></button>
+  <figcaption>발송지연 처리 창. 사유와 발송기한을 정합니다.</figcaption></figure>
+
+  <div class="copy">
+    <button type="button" data-copy="delay-msg">복사</button>
+<pre id="delay-msg">안녕하세요 고객님 :)
+먼저 배송에 불편을 드려 죄송합니다.
+
+현재 공급사측 사정으로 인하여 출고가 지연되고 있는것으로 확인됩니다.
+가능한 빠른 출고 진행을 도와드릴 수 있도록 노력하고 있으나
+최대 1 ~ 2개월가량 지연될 수 있을것으로 사료됩니다.
+
+취소를 원하실경우 취소요청 주시면 빠른 환불조치 도와드리겠습니다.
+최대한 빠른 출고가 될 수 있도록 더욱 신경써서 확인하겠습니다.
+다시한번 불편을 드려 죄송합니다.</pre>
+  </div>
+  <figure><button type="button" data-zoom><img src="img/09_delay_message.jpg" alt="메모장의 발송지연 안내 문구를 상세 사유 칸에 붙여넣는 화면" loading="lazy"></button>
+  <figcaption>안내 문구를 메모장에 저장해 두고 복사해서 붙여넣으면 빠릅니다.</figcaption></figure>
+  <div class="callout warn"><strong>처리 전에 한 번 더 확인하세요.</strong><p>발송지연은 결제일 이후 최대 90일 이내로 주문당 1회만 할 수 있고, 입력한 내용은 나중에 고칠 수 없습니다. 바뀐 발송기한까지 발송하지 못하면 고객 취소 요청 시 바로 환불되고 지연 페널티가 붙습니다.</p></div>
+
+  <h3>③ 지연 건 관리하기</h3>
+  <ul>
+    <li>발송지연 처리한 주문은 판매장부의 <b>‘배송지연’ 탭</b>으로 잘라서 옮겨 둡니다. (잘라내기 <span class="ui">Ctrl+X</span>, 붙여넣기 <span class="ui">Ctrl+V</span>)</li>
+    <li>그 사이 고객이 <b>취소 요청</b>을 하면 스토어의 취소요청 메뉴에 뜹니다. 발송지연한 주문이면 그냥 승인해 주세요. 환불이 끝나면 장부에서도 그 줄을 지웁니다.</li>
+    <li>취소가 안 들어와도 걱정하지 않아도 됩니다. 온라인 가격은 계속 바뀌고, <b>주말과 월초에 할인이 가장 많습니다.</b> 그때 다시 검색해서 마진이 남으면 발주합니다.</li>
+  </ul>
+</section>
+
+<section id="s6">
+  <h2><span class="n">06</span>마진이 남을 때 ① 상품 구매와 입고 등록</h2>
+  <p class="sub">발주할 상품은 뷰셀 창고로 받은 뒤 창고에서 고객에게 출고합니다. 셀러들의 수다의 <span class="ui">재고&amp;배송요청</span> 메뉴를 씁니다.</p>
+
+  <h3>상품을 살 때 배송지 적는 법</h3>
+  <ul>
+    <li>이름: <b>본인 성함</b> / 연락처: <b>본인 연락처</b></li>
+    <li>주소: 셀러들의 수다 <span class="ui">재고관리</span> 탭에 안내된 <b>창고 주소</b></li>
+    <li>주소 맨 뒤에 <b>내 사서함번호</b>를 꼭 붙입니다. 송장에는 이름 일부가 별표로 가려지고 동명이인도 많아서, 사서함번호가 없으면 창고에서 누구 물건인지 알 수 없습니다.</li>
+  </ul>
+  <div class="copy">
+    <button type="button" data-copy="addr-fmt">복사</button>
+<pre id="addr-fmt">(창고 주소 전체) 내사서함번호
+예) 경기도 ○○시 ○○로 12, 3층 가000</pre>
+  </div>
+  <figure><button type="button" data-zoom><img src="img/10_pobox.jpg" alt="셀러들의 수다 재고관리 탭의 내 사서함번호 안내" loading="lazy"></button>
+  <figcaption>재고관리 탭 위쪽에 <b>내 사서함번호</b>와 복사 버튼이 있습니다. (번호와 창고 주소는 가렸습니다.)</figcaption></figure>
+  <div class="callout note"><strong>사서함번호는 평소엔 바뀌지 않습니다.</strong><p>물량이 많아지면 정식 코드 번호와 전용 칸을 따로 드리는데, 그때 한 번 바뀔 수 있습니다. 그 전까지는 지금 번호를 계속 쓰면 됩니다.</p></div>
+
+  <h3>입고 등록하기</h3>
+  <ol class="steps">
+    <li><span class="ui">재고관리 → 입고 등록 (사무실로 보낼 물건)</span>으로 내려갑니다.</li>
+    <li><b>카탈로그명</b>: 스토어 상품명을 그대로 복사해 붙여넣습니다. (상품명을 카탈로그명과 똑같이 쓰기 때문)</li>
+    <li><b>옵션</b>: 색상·사이즈처럼 나뉘는 상품만 적습니다. 용량은 카탈로그명에 들어 있으니 비워 둡니다.</li>
+    <li><b>수량</b>: 내가 <b>구매한 수량</b>을 적습니다.</li>
+    <li><b>공급가·구매사이트</b>: 산 가격과 구매한 곳(링크)을 적습니다.</li>
+    <li><b>메모</b>: 물류 담당자가 보고 처리할 수 있게 필요한 내용을 적습니다. (예: 택배 3박스로 발송 / 송장번호)</li>
+    <li><span class="ui">입고 등록</span>을 누르면 창고에서 실시간으로 확인합니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/11_inbound.jpg" alt="입고 등록 입력 양식: 카탈로그명, 옵션, 수량, 공급가, 구매사이트, 메모" loading="lazy"></button>
+  <figcaption>입고 등록 양식. 카탈로그명은 스토어 상품명과 똑같이 넣습니다.</figcaption></figure>
+</section>
+
+<section id="s7">
+  <h2><span class="n">07</span>마진이 남을 때 ② 배송 요청 (엑셀로 한 번에)</h2>
+  <p>창고가 고객에게 보내려면 주문 정보를 받아야 합니다. <span class="ui">배송요청</span> 탭에서 한 건씩 손으로 입력할 수도 있지만, <b>주문이 적어도 엑셀 대량등록으로 하는 습관</b>을 들이세요. 주문이 갑자기 늘었을 때 그대로 쓸 수 있습니다.</p>
+  <figure><button type="button" data-zoom><img src="img/12_ship_request.jpg" alt="배송요청 입력 양식과 엑셀로 여러 건 한번에 등록 버튼" loading="lazy"></button>
+  <figcaption>배송요청 탭 아래쪽의 <b>엑셀로 여러 건 한번에 등록</b>을 씁니다.</figcaption></figure>
+  <ol class="steps">
+    <li><span class="ui">엑셀로 여러 건 한번에 등록 → 1) 엑셀 템플릿 받기</span>를 누릅니다.</li>
+    <li>템플릿에 주문 엑셀의 정보를 붙여넣습니다. <b>받는사람 · 카탈로그명 · 옵션 · 수량 · 연락처 · 주소 · 배송메시지</b> 순서입니다. 마우스보다 <span class="ui">Ctrl+C</span> / <span class="ui">Ctrl+V</span>가 빠릅니다.</li>
+    <li>카탈로그명은 <b>입고 등록한 이름과 똑같이</b> 적어야 접수됩니다. 템플릿의 ‘예시’ 줄은 지웁니다.</li>
+    <li>파일을 내 컴퓨터에 저장합니다.</li>
+    <li><span class="ui">2) 주문을 채운 엑셀 파일 선택 → 파일 선택</span>으로 방금 저장한 파일을 고르고 <span class="ui">등록하기</span> → <span class="ui">확인</span>.</li>
+    <li>배송요청 현황 목록에 들어왔는지 확인합니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/13_template.jpg" alt="배송요청 대량등록 템플릿과 주문 엑셀을 나란히 놓고 붙여넣는 화면" loading="lazy"></button>
+  <figcaption>위: 배송요청 대량등록 템플릿 / 아래: 스마트스토어 주문 엑셀. 아래에서 복사해 위에 붙여넣습니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/14_bulk_upload.jpg" alt="배송요청 대량등록 창에서 엑셀 파일 선택 후 등록" loading="lazy"></button>
+  <figcaption>저장한 파일을 선택하면 ‘읽은 주문 1건’처럼 표시됩니다. 등록하기를 누르면 끝.</figcaption></figure>
+  <div class="callout tip"><strong>출고 시간</strong><p>창고는 오전 9시에 들어온 상품을 검수하고, <b>오후 3시 전까지 들어온 배송요청</b>은 당일 발송합니다. 단, 창고에 내 재고가 들어와 있어야 합니다. 출고되면 스토어에는 자동으로 발송처리됩니다.</p></div>
+</section>
+
+<section id="s8">
+  <h2><span class="n">08</span>배송비 예치금 충전</h2>
+  <p>배송비는 선불 차감 방식이라 <b>잔액이 있어야 발송</b>됩니다.</p>
+  <ol class="steps">
+    <li>셀러들의 수다에서 <span class="ui">충전하기</span> → <span class="ui">확인</span>을 누르면 충전 사이트가 열립니다.</li>
+    <li>1만 원 단위로 수량을 정합니다. (2만 원이면 수량 2)</li>
+    <li><span class="ui">구매하기</span> → 로그인(처음이면 회원가입) → 이름·연락처 입력.</li>
+    <li>결제는 <b>무통장 입금만</b> 됩니다. 택배비는 택배사에 그대로 전달되는 비용이라 카드 결제가 안 됩니다.</li>
+    <li>입금하면 <b>매일 오전 10시</b>에 확인 후 충전 처리됩니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/16_charge.jpg" alt="배송비 충전 사이트, 수량 1, 10,000원, 구매하기" loading="lazy"></button>
+  <figcaption>충전 사이트. 1만 원 단위로 수량을 정하고 구매하기를 누릅니다.</figcaption></figure>
+  <div class="callout note"><strong>얼마나 넣어야 하나요?</strong><p>딱 맞게 넣어도 되고 여유 있게 넣어도 됩니다. 남은 금액은 원하면 확인 후 환불해 드리니, 너무 과하지 않게 적당히 충전하세요.</p></div>
+</section>
+
+<section id="s9">
+  <h2><span class="n">09</span>판매장부 마무리</h2>
+  <ul>
+    <li><b>날짜</b>: 발송처리한 날짜를 적습니다.</li>
+    <li><b>도매단가 · 배송비</b>: 실제로 산 가격과 배송비를 넣으면 원가합, 수수료, 마진이 자동으로 계산됩니다.</li>
+    <li><b>판매처</b>: 물건을 직접 산 경우 <b>사입</b>이라고 적습니다.</li>
+  </ul>
+  <figure><button type="button" data-zoom><img src="img/15_ledger_margin.jpg" alt="판매장부에 도매단가 14,000원, 배송비 3,000원, 판매처 사입을 입력해 마진이 계산된 화면" loading="lazy"></button>
+  <figcaption>도매단가 14,000원 + 배송비 3,000원 입력 → 판매가 18,670원에서 수수료 1,250원을 빼고 마진 420원.</figcaption></figure>
+</section>
+
+<section id="etc">
+  <h2>판매중지 요청을 받았을 때</h2>
+  <p>브랜드나 권리자에게서 “판매를 중지해 달라”는 문자나 메일이 오면 아래처럼 처리합니다.</p>
+  <ol class="steps">
+    <li><span class="ui">상품관리 → 상품 조회/수정</span>에서 해당 상품을 체크합니다.</li>
+    <li><span class="ui">판매변경</span>에서 <b>판매중지</b>로 바꿉니다.</li>
+    <li><span class="ui">전시변경</span>에서 <b>전시중지</b>도 합니다. 판매중지와 전시중지는 <b>둘 다 해야 하는 세트</b>입니다.</li>
+    <li>중지 처리만 하면 됩니다. 메일 회신을 요구해도 따로 답장할 필요는 없습니다.</li>
+  </ol>
+  <div class="callout tip"><strong>스토어 고객센터 번호는 070으로 바꿔 두세요.</strong><p>개인 휴대폰 번호를 그대로 쓰면 광고 전화와 고객 연락이 계속 와서 번거로워집니다. 바꾸는 방법은 단톡방 공지를 참고하세요.</p></div>
+</section>
+
+<section id="checklist">
+  <h2>발주처리 체크리스트</h2>
+  <p class="sub">주문이 들어올 때마다 위에서부터 차례로 체크하세요. 체크 표시는 이 브라우저에만 저장됩니다.</p>
+  <ul class="check">
+    <li><input type="checkbox" id="c1"><label for="c1">신규 주문 전체 선택 → 엑셀 다운로드(비밀번호 0 또는 1234) → 발주확인</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2">필요한 열만 남기고 상품명 오름차순 정렬</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3">판매장부에 붙여넣기 → 서식만 붙여넣기</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4">네이버 카탈로그 수량별 구성 확인 (재발송 배송비 포함)</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5">에누리 배송비 포함 ON → 파란 구성 → 카드할인 ON → 마진계산</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6">마진 없음: 판매가 1만 원 인상 + 발송지연(3개월 뒤, 안내 문구) + 장부 ‘배송지연’ 탭</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7">마진 있음: 창고 주소 + 내 사서함번호로 구매 → 입고 등록</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8">배송요청 템플릿 작성 → 엑셀 대량등록 (오후 3시 전)</label></li>
+    <li><input type="checkbox" id="c9"><label for="c9">배송비 잔액 확인, 부족하면 무통장 입금 충전</label></li>
+    <li><input type="checkbox" id="c10"><label for="c10">판매장부에 날짜·도매단가·배송비·판매처(사입) 기록</label></li>
+  </ul>
+</section>
+</main>
+</div>
+
+<dialog id="zoom" aria-label="확대 보기"><img alt=""></dialog>
+
+<script>
+(function(){
+  var dlg=document.getElementById('zoom'), big=dlg.querySelector('img');
+  document.querySelectorAll('[data-zoom]').forEach(function(b){
+    b.addEventListener('click',function(){var i=b.querySelector('img');big.src=i.src;big.alt=i.alt;
+      if(dlg.showModal){dlg.showModal();}});
+  });
+  dlg.addEventListener('click',function(){dlg.close();});
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var el=document.getElementById(btn.getAttribute('data-copy'));var txt=el.textContent;
+      function done(){btn.textContent='복사됨';setTimeout(function(){btn.textContent='복사';},1600);}
+      function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='선택됨 · Ctrl+C';}
+      try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(e){fallback();}
+    });
+  });
+  var KEY='beautysell-order-check';
+  var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  document.querySelectorAll('.check input').forEach(function(cb){
+    if(saved[cb.id])cb.checked=true;
+    cb.addEventListener('change',function(){saved[cb.id]=cb.checked;try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}});
+  });
+})();
+</script>
+
+</body>
+</html>

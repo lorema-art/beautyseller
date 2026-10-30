@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>주말 가격관리 따라하기 | BEAUTYSELL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 발주처리 따라하기(order-guide)와 같은 틀. 좌측 고정 목차 + 본문 한 줄 흐름, 단계 번호, 캡처는 클릭하면 확대. */
+:root{
+  --bg:#f6f7f5; --paper:#ffffff; --ink:#1d2421; --muted:#5d6862; --line:#dfe3df;
+  --accent:#0f7a52; --accent-soft:#e3f2ea; --warn:#b4471f; --warn-soft:#fbeae2; --note:#8a6a12; --note-soft:#fbf3dc;
+  --display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131816; --paper:#1b211e; --ink:#e7ece9; --muted:#9daaa3; --line:#2e3833;
+  --accent:#4fc893; --accent-soft:#1d3329; --warn:#f08c63; --warn-soft:#3a241b; --note:#e2bf5c; --note-soft:#332c17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131816; --paper:#1b211e; --ink:#e7ece9; --muted:#9daaa3; --line:#2e3833;
+  --accent:#4fc893; --accent-soft:#1d3329; --warn:#f08c63; --warn-soft:#3a241b; --note:#e2bf5c; --note-soft:#332c17; color-scheme:dark}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-top:40px;font-size:14px}
+nav.toc b{display:block;font-family:var(--display);font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 10px;border-radius:6px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);background:var(--accent-soft);outline:none}
+main{min-width:0;padding-top:40px}
+header.hero{padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.1em;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,42px);line-height:1.25;margin:8px 0 12px;text-wrap:balance}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.35;margin:0 0 6px;text-wrap:balance;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:var(--mono);font-size:15px;color:var(--accent);flex:none}
+h3{font-family:var(--display);font-weight:700;font-size:18px;margin:28px 0 6px}
+section{padding-block:44px 8px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+section:last-of-type{border-bottom:0}
+p{margin:8px 0;max-width:68ch}
+.sub{color:var(--muted);margin-top:0}
+ol.steps{margin:14px 0;padding-left:1.4em;display:grid;gap:6px;max-width:68ch}
+ol.steps li::marker{font-family:var(--mono);color:var(--accent)}
+ul{padding-left:1.2em;max-width:68ch}
+.ui{font-family:var(--body);font-weight:600;font-size:.9em;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:1px 7px;white-space:nowrap}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+figure{margin:18px 0 6px}
+figure button{all:unset;cursor:zoom-in;display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper)}
+figure button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+figure img{display:block;width:100%;height:auto}
+figure.clip video{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#000;aspect-ratio:1280/580}
+.vtag{display:inline-block;font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:0 6px;margin-right:6px}
+.speed{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.speed button{font:600 13px var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 12px;cursor:pointer}
+.speed button[aria-pressed="true"]{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:6px}
+.callout{border-radius:8px;padding:12px 16px;margin:16px 0;max-width:72ch;font-size:15px}
+.callout strong{font-family:var(--display)}
+.callout.tip{background:var(--accent-soft)}
+.callout.warn{background:var(--warn-soft)}
+.callout.warn strong{color:var(--warn)}
+.callout.note{background:var(--note-soft)}
+.callout.note strong{color:var(--note)}
+.callout p{margin:4px 0}
+/* 흐름도 */
+.flow{display:grid;gap:10px;margin:24px 0 8px;font-size:14.5px}
+.flow .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow .box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-weight:500}
+.flow .arrow{color:var(--muted)}
+.flow .branch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flow .lane{border-radius:10px;padding:12px;display:grid;gap:8px;align-content:start}
+.flow .lane.ok{background:var(--accent-soft)}
+.flow .lane.no{background:var(--warn-soft)}
+.flow .lane h4{margin:0;font-family:var(--display);font-size:14px}
+.flow .lane.ok h4{color:var(--accent)} .flow .lane.no h4{color:var(--warn)}
+.flow .lane .box{font-size:14px}
+/* 표 */
+.tbl{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--display);font-size:13px;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:1px 10px;white-space:nowrap}
+.pill.no{background:var(--warn-soft);color:var(--warn)} .pill.ok{background:var(--accent-soft);color:var(--accent)}
+/* 복사 블록 */
+.copy{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0;max-width:72ch}
+.copy pre{margin:0;white-space:pre-wrap;font-family:var(--body);font-size:15px;line-height:1.75}
+.copy button{position:absolute;top:10px;right:10px;font:600 13px var(--body);color:var(--accent);background:var(--accent-soft);border:0;border-radius:6px;padding:5px 10px;cursor:pointer}
+.copy button:focus-visible{outline:2px solid var(--accent)}
+/* 체크리스트 */
+.check{list-style:none;padding:0;display:grid;gap:8px;max-width:72ch}
+.check li{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.check input{margin-top:6px;accent-color:var(--accent);flex:none}
+.check label{cursor:pointer}
+/* 확대 보기 */
+dialog{border:0;padding:0;max-width:min(96vw,1800px);background:transparent}
+dialog::backdrop{background:rgba(0,0,0,.78)}
+dialog img{display:block;max-width:100%;max-height:92vh;border-radius:6px}
+.privacy{font-size:13px;color:var(--muted);margin-top:14px}
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{position:static;padding-top:24px}
+  nav.toc ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  main{padding-top:16px}
+}
+@media (max-width:520px){.flow .branch{grid-template-columns:1fr} nav.toc ol{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+/* 숫자 카드 */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0;max-width:820px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px}
+.stat .v{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.2;color:var(--accent)}
+.stat.warn .v{color:var(--warn)}
+.stat .l{font-size:13.5px;color:var(--muted);line-height:1.5}
+/* 5주 규칙 */
+.weeks{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin:20px 0 8px;max-width:820px}
+.wk{background:var(--note-soft);border-radius:8px;padding:10px 8px;text-align:center;display:grid;gap:2px}
+.wk b{font-family:var(--display);font-size:14px}
+.wk span{font-family:var(--mono);font-size:13px;color:var(--note)}
+.wk.stop{background:var(--warn-soft)} .wk.stop b{color:var(--warn)} .wk.stop span{font-family:var(--body);color:var(--warn)}
+.reset{margin-top:14px;font:600 13px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.reset:hover{color:var(--ink)}
+@media (max-width:640px){.stats{grid-template-columns:1fr}.weeks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+<body>
+
+<div class="wrap">
+<nav class="toc" aria-label="목차">
+  <b>목차</b>
+  <ol>
+    <li><a href="#why">왜 매주 해야 하나</a></li>
+    <li><a href="#flow">전체 흐름</a></li>
+    <li><a href="#s1">1. 카탈로그 가격관리 열기</a></li>
+    <li><a href="#s2">2. ‘+ −’ 오류 상품</a></li>
+    <li><a href="#s3">3. 1,000원 이상 차이 상품</a></li>
+    <li><a href="#s4">4. 실제 최저가·마진 확인</a></li>
+    <li><a href="#s5">5. 마진 남음: 최저가 선점</a></li>
+    <li><a href="#s6">6. 마진 없음: 1만 원 인상</a></li>
+    <li><a href="#s7">7. 5주 규칙: 판매중지</a></li>
+    <li><a href="#cases">실제 판단 사례</a></li>
+    <li><a href="#weekend">주말 시간 쓰는 법</a></li>
+    <li><a href="#checklist">체크리스트</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">BEAUTYSELL · 실습 자료</div>
+  <h1>주말마다 하는 전체 가격관리 따라하기</h1>
+  <p class="lead">가격관리 프로그램은 최저가와 <b>1,000원 이하</b>로 차이 나는 상품만 자동으로 맞춥니다. 그보다 차이가 큰 상품은 사람이 직접 봐야 합니다. 매주 주말, 이 상품들을 하나씩 확인해서 <b>마진이 남으면 최저가를 잡고, 안 남으면 가격을 올리는</b> 과정을 실제 원격 실습 화면으로 정리했습니다.</p>
+  <div class="speed" role="group" aria-label="영상 재생 속도">영상 재생 속도 <button type="button" data-rate="1" aria-pressed="false">1배</button><button type="button" data-rate="1.5" aria-pressed="true">1.5배</button><button type="button" data-rate="2" aria-pressed="false">2배</button></div>
+  <p class="privacy">화면 속 스토어 계정 아이디는 사진과 영상 모두에서 가렸고, 실습 중 다른 창이 비친 구간은 영상에서 뺐습니다. 영상은 소리 없이 화면만 담았습니다.</p>
+</header>
+
+<section id="why">
+  <h2>왜 매주 해야 하나</h2>
+  <p class="sub">상품을 많이 올리는 것보다, 올린 상품을 정확하게 운영하는 게 더 중요합니다.</p>
+  <div class="stats">
+    <div class="stat"><span class="v num">541개</span><span class="l">실습 스토어의 카탈로그 매칭 상품</span></div>
+    <div class="stat"><span class="v num">약 150개</span><span class="l">프로그램이 자동으로 가격관리하는 상품 (1,000원 이하 차이)</span></div>
+    <div class="stat warn"><span class="v num">200개+</span><span class="l">마진이 남는데도 가격관리를 안 해서 최저가를 못 잡고 있던 상품</span></div>
+  </div>
+  <ul>
+    <li>최저가가 아니면 주문이 들어오지 않습니다. 마진이 남는 상품인데 손을 안 대면 그냥 놓치는 매출입니다.</li>
+    <li>예전에는 가격관리를 전부 손으로 해서 다들 중요하다는 걸 알았습니다. 프로그램이 생기면서 “알아서 되겠지” 하고 손을 놓는 경우가 많아졌는데, <b>프로그램이 맡는 건 1,000원 이하 차이뿐</b>입니다.</li>
+    <li>상품은 매주 계속 올라갑니다. 미루면 쌓여서 막상 하려고 할 때 한숨만 나옵니다. 매주 해야 볼 상품이 점점 줄어듭니다(7단계 5주 규칙).</li>
+  </ul>
+  <div class="callout tip"><strong>왜 주말인가요?</strong><p>할인은 <b>주말</b>과 <b>월초</b>에 가장 많습니다. 평소엔 마진이 안 남던 상품도 이때 다시 보면 최저가를 잡을 수 있습니다.</p></div>
+</section>
+
+<section id="flow">
+  <h2>전체 흐름</h2>
+  <p class="sub">한 상품씩, 위에서부터 차례로 봅니다. 결론은 둘 중 하나입니다.</p>
+  <div class="flow" role="img" aria-label="카탈로그 가격관리에서 플러스마이너스 오류 상품과 1,000원 이상 차이 상품을 골라 상세보기와 에누리로 실제 최저가를 확인하고 마진을 계산한다. 마진이 남으면 최저가보다 10원 낮게 판매가를 바꿔 저장하고, 남지 않으면 체크해 두었다가 한 번에 1만 원 인상한다. 5주 동안 누적 5만 원 이상 올려도 안 되면 판매중지한다.">
+    <div class="row">
+      <span class="box">카탈로그 가격관리</span><span class="arrow">→</span>
+      <span class="box">‘+ −’ 오류 · 1,000원 이상 차이 상품</span><span class="arrow">→</span>
+      <span class="box">상세보기 + 에누리로 실제 최저가</span><span class="arrow">→</span>
+      <span class="box">마진계산기</span>
+    </div>
+    <div class="branch">
+      <div class="lane ok">
+        <h4>마진이 남는다 → 최저가 선점</h4>
+        <span class="box">판매가 = 최저가보다 10원 낮게</span>
+        <span class="box">수정저장</span>
+      </div>
+      <div class="lane no">
+        <h4>마진이 안 남는다 → 가격 인상</h4>
+        <span class="box">체크만 해 두고 다음 상품으로</span>
+        <span class="box">다 본 뒤 한 번에 1만 원 인상</span>
+        <span class="box">5주째(누적 5만 원+)에도 안 되면 판매중지</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s1">
+  <h2><span class="n">01</span>카탈로그 가격관리 화면 열기</h2>
+  <ol class="steps">
+    <li>스마트스토어센터에서 <span class="ui">상품관리 → 카탈로그 가격관리</span>로 들어갑니다.</li>
+    <li>위쪽 요약에서 카탈로그에 매칭된 내 상품 수, 최저가가 같은 상품, <b>최저가 달성 가능 상품</b> 수를 확인합니다.</li>
+    <li>아래 목록은 <span class="ui">가격경쟁력 높은순</span>, <span class="ui">100개씩</span>으로 놓고 봅니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/01_catalog_summary.jpg" alt="카탈로그 가격관리 요약: 카탈로그 상품 541건, 최저가격이 같은 상품 53건, 최저가 달성 가능 상품 156건" loading="lazy"></button>
+  <figcaption>카탈로그 가격관리 요약. 실습 스토어는 매칭 상품 541건 중 최저가가 같은 상품이 53건뿐이었습니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/02_price_list.jpg" alt="카탈로그 가격관리 상품목록: 최저가와 차이, 카탈로그 순위, 상세보기, 카탈로그 최저가, 판매가 열" loading="lazy"></button>
+  <figcaption>상품목록. <b>최저가와 차이</b> 칸과 <b>상세보기</b> 버튼, 맨 오른쪽 <b>판매가</b> 칸을 주로 씁니다.</figcaption></figure>
+  <div class="callout note"><strong>목록의 최저가는 실시간이 아닙니다.</strong><p>네이버 안내대로 최저가 정보는 1시간 주기로 갱신되고, 바꾼 가격이 카탈로그에 반영되기까지 최대 8시간이 걸릴 수 있습니다. 그래서 가격을 바꾸기 전에 반드시 <span class="ui">상세보기</span>로 지금 최저가를 확인합니다.</p></div>
+</section>
+
+<section id="s2">
+  <h2><span class="n">02</span>‘+ −’가 같이 붙은 상품은 오류: 무조건 확인</h2>
+  <p>목록 맨 위쪽에 <b>“+ −11,110원 (−14.4% 높음)”</b>처럼 플러스와 마이너스가 같이 붙은 상품이 있습니다. 이건 최저가 정보가 잘못 잡힌 <b>오류</b>라서, 금액과 상관없이 무조건 직접 확인해야 합니다.</p>
+  <ol class="steps">
+    <li>‘+ −’ 상품의 <span class="ui">상세보기</span>를 누르면 네이버 가격비교 카탈로그가 열립니다.</li>
+    <li>카탈로그에 나온 실제 최저가를 봅니다. 실습 상품은 목록에는 최저가 <span class="num">77,000원</span>으로 나왔지만, 실제 최저가는 <span class="num">57,000원</span>이었습니다.</li>
+    <li>에누리에서도 같은 상품을 검색해 봅니다. (4단계)</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/03_naver_catalog.jpg" alt="네이버 가격비교 카탈로그, 더메스테릭스 EGF 블레미쉬 밤 최저 57,000원" loading="lazy"></button>
+  <figcaption>상세보기로 연 카탈로그. 목록에는 77,000원이었지만 실제 최저가는 57,000원.</figcaption></figure>
+  <figure class="clip"><video src="vid/k01_error_check.mp4" poster="vid/k01_error_check.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>‘+ −’ 상품 → 상세보기 → 카탈로그 실제 최저가 → 에누리 검색 (22초)</figcaption></figure>
+</section>
+
+<section id="s3">
+  <h2><span class="n">03</span>1,000원 이상 차이 나는 상품: 사람이 봐야 하는 구간</h2>
+  <p>목록을 아래로, 다음 페이지로 넘기다 보면 <b>최저가와 차이가 1,000원을 넘는 상품</b>이 나오기 시작합니다. 여기부터는 프로그램이 가격관리를 하지 않습니다. 이 구간을 위에서부터 한 상품씩 끝까지 봅니다.</p>
+  <figure><button type="button" data-zoom><img src="img/07_over_1000.jpg" alt="최저가와 차이가 1,000원 이상인 상품들이 나오는 목록 페이지" loading="lazy"></button>
+  <figcaption>차이가 +1,000원을 넘는 상품들. 이 상품들은 프로그램이 손대지 않습니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k03_over_1000.mp4" poster="vid/k03_over_1000.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>1,000원 이상 구간에서 상품 골라 상세보기 → 카탈로그 최저가 확인 (10초)</figcaption></figure>
+  <div class="callout warn"><strong>이 구간이 매출을 놓치는 곳입니다.</strong><p>실습 스토어는 500개 가까운 상품이 이 구간에 방치돼 있었고, 그중 200개 넘게는 마진이 남는데도 최저가를 못 잡고 있었습니다. 주문이 안 들어온 이유가 바로 여기 있습니다.</p></div>
+</section>
+
+<section id="s4">
+  <h2><span class="n">04</span>실제 최저가 확인하고 마진 계산하기</h2>
+  <ol class="steps">
+    <li><span class="ui">상세보기</span>로 네이버 카탈로그 최저가를 봅니다.</li>
+    <li>에누리에서 <b>상품명이나 모델명</b>으로 검색해 최저가를 한 번 더 봅니다. 에누리는 <span class="ui">배송비 포함</span>과 <span class="ui">카드할인</span>을 켜고 봅니다. 자세한 방법은 <a href="../order-guide/#s4">발주처리 따라하기 4단계</a>와 같습니다.</li>
+    <li>마진계산기에 매입 가격과 판매가를 넣어 봅니다. 판매가는 <b>지금 최저가보다 10원 낮은 가격</b>으로 넣습니다. 결과가 <b>초록(+)</b>이면 마진이 남고, <b>빨강(−)</b>이면 역마진입니다.</li>
+    <li>묶음 상품은 개당 가격으로 나눠서 봅니다. (예: 95,000원짜리 2개 묶음이면 ÷2) 파는 곳이 <b>본사·공식 판매처</b>인지도 같이 봅니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/04_enuri.jpg" alt="에누리에서 같은 상품을 검색한 화면" loading="lazy"></button>
+  <figcaption>에누리 검색. 네이버와 함께 두 곳 다 확인합니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/08_margin_calc.jpg" alt="마진계산기 결과 마진 6,319원, 마진율 1.5%, 옆에 쿠쿠 식기세척기 카탈로그 최저 408,130원" loading="lazy"></button>
+  <figcaption>쿠쿠 식기세척기: 카탈로그 최저가 408,130원 → 판매가 408,120원으로 계산하니 마진 <b>+6,319원</b>. 최저가를 잡을 수 있는 상품입니다.</figcaption></figure>
+</section>
+
+<section id="s5">
+  <h2><span class="n">05</span>마진이 남으면: 최저가보다 10원 낮게 바꾸고 저장</h2>
+  <ol class="steps">
+    <li>카탈로그 가격관리 목록으로 돌아와 그 상품의 <b>판매가 칸</b>을 누릅니다.</li>
+    <li><b>카탈로그 최저가보다 10원 낮은 가격</b>을 입력합니다. (예: 최저가 408,150원 → 408,140원)</li>
+    <li>오른쪽 위 <span class="ui">수정저장</span>을 누릅니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/09_inline_price.jpg" alt="목록 판매가 칸에 408,140원을 입력한 화면, 카탈로그 최저가 408,150원" loading="lazy"></button>
+  <figcaption>판매가 칸에 최저가보다 10원 낮은 408,140원을 입력. 그다음 수정저장.</figcaption></figure>
+  <figure class="clip"><video src="vid/k04_margin_save.mp4" poster="vid/k04_margin_save.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>마진계산기로 마진 확인 → 목록 판매가 칸 수정 → 수정저장 (26초)</figcaption></figure>
+</section>
+
+<section id="s6">
+  <h2><span class="n">06</span>마진이 안 남으면: 체크해 두고 한 번에 1만 원 인상</h2>
+  <p>하나 볼 때마다 가격을 올리면 시간이 오래 걸립니다. <b>위에서부터 쭉 보면서 인상할 상품만 체크</b>해 두고, 다 본 뒤 한 번에 올립니다.</p>
+  <ol class="steps">
+    <li>마진이 안 남는 상품의 왼쪽 체크박스를 체크하고 다음 상품으로 넘어갑니다.</li>
+    <li>한 페이지를 다 봤으면 목록 위 <span class="ui">판매가 변경</span>을 누릅니다.</li>
+    <li><b>10,000 / 원 / 인상</b>으로 입력하고 <span class="ui">변경</span>을 누릅니다.</li>
+    <li>‘일괄변경 결과’ 창이 뜨면 끝입니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/06_multi_check.jpg" alt="목록에서 인상할 상품 여러 개를 체크한 화면" loading="lazy"></button>
+  <figcaption>인상할 상품을 체크만 해 두고 계속 봅니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/05_price_up_dialog.jpg" alt="판매가 변경 창: 판매가 입력, 원, 인상 선택" loading="lazy"></button>
+  <figcaption>판매가 변경 창. 10,000원 / 인상으로 바꾸고 변경.</figcaption></figure>
+  <figure class="clip"><video src="vid/k02_price_up.mp4" poster="vid/k02_price_up.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>상품 체크 → 판매가 변경 → 1만 원 인상 → 일괄변경 결과 (8초)</figcaption></figure>
+  <div class="callout note"><strong>왜 올리나요?</strong><p>최저가를 못 잡는 가격으로 두면 어차피 주문이 안 들어오고, 들어와도 역마진입니다. 올려 두고 다음 주말에 다시 봅니다.</p></div>
+</section>
+
+<section id="s7">
+  <h2><span class="n">07</span>5주 규칙: 누적 5만 원 넘게 올렸는데도 안 되면 판매중지</h2>
+  <p>6단계를 매주 반복합니다. 같은 상품을 <b>5주 동안 매주 1만 원씩 올려 누적 5만 원 이상</b> 올라갔는데도 최저가를 못 잡으면 그 상품은 <b>판매중지</b>합니다. 삭제가 아니라 판매중지입니다.</p>
+  <div class="weeks" role="img" aria-label="1주차부터 5주차까지 매주 1만 원씩 인상, 누적 5만 원이 되면 판매중지">
+    <div class="wk"><b>1주</b><span>+1만</span></div>
+    <div class="wk"><b>2주</b><span>+2만</span></div>
+    <div class="wk"><b>3주</b><span>+3만</span></div>
+    <div class="wk"><b>4주</b><span>+4만</span></div>
+    <div class="wk"><b>5주</b><span>+5만</span></div>
+    <div class="wk stop"><b>판매중지</b><span>그래도 안 되면</span></div>
+  </div>
+  <h3>왜 5주인가요?</h3>
+  <ul>
+    <li>5주면 할인이 많은 <b>주말을 5번</b>, <b>월초를 2번</b> 지납니다. 그런데도 최저가를 못 잡았다면 그 상품은 이미 트렌드가 끝나서 당분간 할인이 없을 가능성이 큽니다.</li>
+    <li>계절이 바뀌면 쓰는 화장품도 달라집니다. 8월 더울 때 올린 상품은 겉옷 입는 지금과 수요가 다릅니다. 화장품뿐 아니라 모든 제품군이 그렇습니다.</li>
+    <li>판매중지한 상품은 목록에서 빠지니 <b>매주 봐야 할 상품이 줄고, 작업 시간도 점점 줄어듭니다.</b></li>
+  </ul>
+  <h3>판매중지 하는 법</h3>
+  <ol class="steps">
+    <li><span class="ui">상품관리 → 상품 조회/수정</span>에서 해당 상품을 체크합니다.</li>
+    <li><span class="ui">판매변경</span>에서 <b>판매중지</b>로 바꿉니다.</li>
+  </ol>
+  <div class="callout tip"><strong>몇 주째인지 놓치지 않으려면</strong><p>인상한 날짜와 횟수를 판매장부나 메모에 상품별로 적어 두면 5주째가 언제인지 바로 알 수 있습니다.</p></div>
+</section>
+
+<section id="cases">
+  <h2>실제 판단 사례</h2>
+  <p class="sub">실습 날 함께 본 상품들입니다.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>상품</th><th>목록에 나온 최저가</th><th>실제 확인한 최저가</th><th>판단</th><th>이유</th></tr></thead>
+    <tbody>
+      <tr><td>더메스테릭스 EGF 블레미쉬 밤 20ml</td><td class="r">77,000원 (‘+ −’ 오류)</td><td class="r">57,000원</td><td><span class="pill no">1만 원 인상</span></td><td>오류 상품이라 직접 확인. 실제 최저가로는 마진이 안 남음</td></tr>
+      <tr><td>쿠쿠 CUCKOO 식기세척기 6인용</td><td class="r">408,150원</td><td class="r">408,130원</td><td><span class="pill ok">최저가 선점</span></td><td>마진계산기 +6,319원. 판매가를 최저가보다 10원 낮게 바꿔 저장</td></tr>
+      <tr><td>2개 묶음 상품 (95,000원)</td><td class="r">—</td><td class="r">개당 약 47,500원</td><td><span class="pill ok">최저가 선점</span></td><td>개당으로 나눠 보니 마진이 남음. 판매처도 본사</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="weekend">
+  <h2>주말 시간 쓰는 법</h2>
+  <ol class="steps">
+    <li><b>전체 가격관리를 먼저</b> 합니다. 이것만 해도 몇 시간은 걸립니다.</li>
+    <li>평일 목표는 하루 20개, <b>주 100개 등록</b>입니다. 금요일까지 100개를 못 채웠다면(예: 70개), 가격관리를 끝낸 뒤 남는 시간에 나머지를 채웁니다.</li>
+    <li>이때는 꼬리물기를 새로 시작하지 말고, <b>G마켓 베스트·슈퍼적립</b> 등에서 지금 할인 중인 상품을 찾아 바로 올립니다. 주말에 꼬리물기를 하기엔 시간이 애매합니다.</li>
+  </ol>
+  <div class="callout tip"><strong>매주 이 두 가지만 지키면 됩니다.</strong><p>주말 전체 가격관리 + 주 100개 등록. 이걸 꾸준히 하면 매출이 늘 수밖에 없습니다.</p></div>
+</section>
+
+<section id="checklist">
+  <h2>주말 가격관리 체크리스트</h2>
+  <p class="sub">매주 주말 위에서부터 차례로 체크하세요. 체크 표시는 이 브라우저에만 저장됩니다.</p>
+  <ul class="check">
+    <li><input type="checkbox" id="c1"><label for="c1">상품관리 → 카탈로그 가격관리 → 가격경쟁력 높은순 · 100개씩</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2">‘+ −’ 오류 상품 전부 상세보기로 실제 최저가 확인</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3">1,000원 이상 차이 상품을 마지막 페이지까지 한 개씩 확인</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4">네이버 카탈로그 + 에누리(배송비 포함·카드할인) 최저가 → 마진계산기</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5">마진 남음: 판매가 칸에 최저가 −10원 입력 → 수정저장</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6">마진 없음: 체크해 두고 페이지 끝에서 판매가 변경 → 10,000원 인상</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7">누적 5만 원 이상 올린 상품(5주째)은 판매중지</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8">이번 주 등록이 100개 미만이면 G마켓 베스트·슈퍼적립 할인 상품으로 채우기</label></li>
+  </ul>
+  <button type="button" class="reset" id="reset">체크 모두 지우기 (다음 주말용)</button>
+</section>
+</main>
+</div>
+
+<dialog id="zoom" aria-label="확대 보기"><img alt=""></dialog>
+
+<script>
+(function(){
+  var dlg=document.getElementById('zoom'), big=dlg.querySelector('img');
+  document.querySelectorAll('[data-zoom]').forEach(function(b){
+    b.addEventListener('click',function(){var i=b.querySelector('img');big.src=i.src;big.alt=i.alt;
+      if(dlg.showModal){dlg.showModal();}});
+  });
+  dlg.addEventListener('click',function(){dlg.close();});
+  var rate=1.5;
+  function applyRate(){document.querySelectorAll('video').forEach(function(v){v.playbackRate=rate;v.defaultPlaybackRate=rate;});}
+  document.querySelectorAll('video').forEach(function(v){v.addEventListener('play',function(){v.playbackRate=rate;});});
+  document.querySelectorAll('[data-rate]').forEach(function(b){b.addEventListener('click',function(){rate=parseFloat(b.dataset.rate);
+    document.querySelectorAll('[data-rate]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});applyRate();});});
+  applyRate();
+  var KEY='beautysell-price-check';
+  var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  var boxes=document.querySelectorAll('.check input');
+  boxes.forEach(function(cb){
+    if(saved[cb.id])cb.checked=true;
+    cb.addEventListener('change',function(){saved[cb.id]=cb.checked;try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}});
+  });
+  document.getElementById('reset').addEventListener('click',function(){saved={};boxes.forEach(function(cb){cb.checked=false;});try{localStorage.removeItem(KEY);}catch(e){}});
+})();
+</script>
+
+</body>
+</html>

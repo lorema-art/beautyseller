@@ -158,7 +158,7 @@ html{scroll-behavior:smooth}
   <h1>주말마다 하는 전체 가격관리 따라하기</h1>
   <p class="lead">가격관리 프로그램은 최저가와 <b>1,000원 이하</b>로 차이 나는 상품만 자동으로 맞춥니다. 그보다 차이가 큰 상품은 사람이 직접 봐야 합니다. 매주 주말, 이 상품들을 하나씩 확인해서 <b>마진이 남으면 최저가를 잡고, 안 남으면 가격을 올리는</b> 과정을 실제 원격 실습 화면으로 정리했습니다.</p>
   <div class="speed" role="group" aria-label="영상 재생 속도">영상 재생 속도 <button type="button" data-rate="1" aria-pressed="false">1배</button><button type="button" data-rate="1.5" aria-pressed="true">1.5배</button><button type="button" data-rate="2" aria-pressed="false">2배</button></div>
-  <p class="privacy">화면 속 스토어 계정 아이디는 사진과 영상 모두에서 가렸고, 실습 중 다른 창이 비친 구간은 영상에서 뺐습니다. 영상은 소리 없이 화면만 담았습니다.</p>
+  <p class="privacy">화면 속 네이버 아이디, 상품명(제품 사진 포함), 구글 화면은 사진과 영상 모두에서 흐리게 가렸고, 실습 중 다른 창이 비친 구간은 영상에서 뺐습니다. 영상은 소리 없이 화면만 담았습니다.</p>
 </header>
 
 <section id="why">
@@ -225,7 +225,7 @@ html{scroll-behavior:smooth}
     <li>카탈로그에 나온 실제 최저가를 봅니다. 실습 상품은 목록에는 최저가 <span class="num">77,000원</span>으로 나왔지만, 실제 최저가는 <span class="num">57,000원</span>이었습니다.</li>
     <li>에누리에서도 같은 상품을 검색해 봅니다. (4단계)</li>
   </ol>
-  <figure><button type="button" data-zoom><img src="img/03_naver_catalog.jpg" alt="네이버 가격비교 카탈로그, 더메스테릭스 EGF 블레미쉬 밤 최저 57,000원" loading="lazy"></button>
+  <figure><button type="button" data-zoom><img src="img/03_naver_catalog.jpg" alt="네이버 가격비교 카탈로그, 최저 57,000원" loading="lazy"></button>
   <figcaption>상세보기로 연 카탈로그. 목록에는 77,000원이었지만 실제 최저가는 57,000원.</figcaption></figure>
   <figure class="clip"><video src="vid/k01_error_check.mp4" poster="vid/k01_error_check.jpg" controls muted playsinline preload="none"></video>
   <figcaption><span class="vtag">영상</span>‘+ −’ 상품 → 상세보기 → 카탈로그 실제 최저가 → 에누리 검색 (22초)</figcaption></figure>
@@ -235,9 +235,9 @@ html{scroll-behavior:smooth}
   <h2><span class="n">03</span>1,000원 이상 차이 나는 상품: 사람이 봐야 하는 구간</h2>
   <p>목록을 아래로, 다음 페이지로 넘기다 보면 <b>최저가와 차이가 1,000원을 넘는 상품</b>이 나오기 시작합니다. 여기부터는 프로그램이 가격관리를 하지 않습니다. 이 구간을 위에서부터 한 상품씩 끝까지 봅니다.</p>
   <figure><button type="button" data-zoom><img src="img/07_over_1000.jpg" alt="최저가와 차이가 1,000원 이상인 상품들이 나오는 목록 페이지" loading="lazy"></button>
-  <figcaption>차이가 +1,000원을 넘는 상품들. 이 상품들은 프로그램이 손대지 않습니다.</figcaption></figure>
+  <figcaption>다음 페이지로 넘어가면 차이가 1,000원을 넘는 상품이 섞여 나오기 시작합니다. 이 상품들은 프로그램이 손대지 않습니다.</figcaption></figure>
   <figure class="clip"><video src="vid/k03_over_1000.mp4" poster="vid/k03_over_1000.jpg" controls muted playsinline preload="none"></video>
-  <figcaption><span class="vtag">영상</span>1,000원 이상 구간에서 상품 골라 상세보기 → 카탈로그 최저가 확인 (10초)</figcaption></figure>
+  <figcaption><span class="vtag">영상</span>1,000원 이상 구간에서 상품 골라 상세보기 → 카탈로그 최저가 확인 (9초)</figcaption></figure>
   <div class="callout warn"><strong>이 구간이 매출을 놓치는 곳입니다.</strong><p>실습 스토어는 500개 가까운 상품이 이 구간에 방치돼 있었고, 그중 200개 넘게는 마진이 남는데도 최저가를 못 잡고 있었습니다. 주문이 안 들어온 이유가 바로 여기 있습니다.</p></div>
 </section>
 
@@ -251,8 +251,8 @@ html{scroll-behavior:smooth}
   </ol>
   <figure><button type="button" data-zoom><img src="img/04_enuri.jpg" alt="에누리에서 같은 상품을 검색한 화면" loading="lazy"></button>
   <figcaption>에누리 검색. 네이버와 함께 두 곳 다 확인합니다.</figcaption></figure>
-  <figure><button type="button" data-zoom><img src="img/08_margin_calc.jpg" alt="마진계산기 결과 마진 6,319원, 마진율 1.5%, 옆에 쿠쿠 식기세척기 카탈로그 최저 408,130원" loading="lazy"></button>
-  <figcaption>쿠쿠 식기세척기: 카탈로그 최저가 408,130원 → 판매가 408,120원으로 계산하니 마진 <b>+6,319원</b>. 최저가를 잡을 수 있는 상품입니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/08_margin_calc.jpg" alt="마진계산기 결과 마진 6,319원, 마진율 1.5%, 옆에 카탈로그 최저 408,130원" loading="lazy"></button>
+  <figcaption>소형 가전 상품: 공식 판매처 최대할인가 422,110원에서 적립 50,653원을 빼면 실제 원가 371,457원. 카탈로그 최저가 408,130원보다 10원 낮은 408,120원에 팔아도 마진 <b>+6,319원</b>. 최저가를 잡을 수 있는 상품입니다.</figcaption></figure>
 </section>
 
 <section id="s5">
@@ -318,9 +318,9 @@ html{scroll-behavior:smooth}
   <table>
     <thead><tr><th>상품</th><th>목록에 나온 최저가</th><th>실제 확인한 최저가</th><th>판단</th><th>이유</th></tr></thead>
     <tbody>
-      <tr><td>더메스테릭스 EGF 블레미쉬 밤 20ml</td><td class="r">77,000원 (‘+ −’ 오류)</td><td class="r">57,000원</td><td><span class="pill no">1만 원 인상</span></td><td>오류 상품이라 직접 확인. 실제 최저가로는 마진이 안 남음</td></tr>
-      <tr><td>쿠쿠 CUCKOO 식기세척기 6인용</td><td class="r">408,150원</td><td class="r">408,130원</td><td><span class="pill ok">최저가 선점</span></td><td>마진계산기 +6,319원. 판매가를 최저가보다 10원 낮게 바꿔 저장</td></tr>
-      <tr><td>2개 묶음 상품 (95,000원)</td><td class="r">—</td><td class="r">개당 약 47,500원</td><td><span class="pill ok">최저가 선점</span></td><td>개당으로 나눠 보니 마진이 남음. 판매처도 본사</td></tr>
+      <tr><td>화장품 A (20ml 1개)</td><td class="r">77,000원 (‘+ −’ 오류)</td><td class="r">57,000원</td><td><span class="pill no">1만 원 인상</span></td><td>오류 상품이라 직접 확인. 실제 최저가로는 마진이 안 남음</td></tr>
+      <tr><td>소형 가전 B</td><td class="r">408,150원</td><td class="r">408,130원</td><td><span class="pill ok">최저가 선점</span></td><td>마진계산기 +6,319원. 판매가를 최저가보다 10원 낮게 바꿔 저장</td></tr>
+      <tr><td>상품 C (2개 묶음, 95,000원)</td><td class="r">—</td><td class="r">개당 약 47,500원</td><td><span class="pill ok">최저가 선점</span></td><td>개당으로 나눠 보니 마진이 남음. 판매처도 본사</td></tr>
     </tbody>
   </table>
   </div>

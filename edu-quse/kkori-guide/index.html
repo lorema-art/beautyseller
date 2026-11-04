@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>프로그램 업데이트 · 꼬리물기 따라하기 | BEAUTYSELL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 좌측 고정 목차 + 본문 한 줄 흐름. 단계는 실제 작업 순서이므로 번호를 붙인다. 화면 캡처는 본문 폭 그대로, 클릭하면 확대. */
+:root{
+  --bg:#f6f7f5; --paper:#ffffff; --ink:#1d2421; --muted:#5d6862; --line:#dfe3df;
+  --accent:#0f7a52; --accent-soft:#e3f2ea; --warn:#b4471f; --warn-soft:#fbeae2; --note:#8a6a12; --note-soft:#fbf3dc;
+  --display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131816; --paper:#1b211e; --ink:#e7ece9; --muted:#9daaa3; --line:#2e3833;
+  --accent:#4fc893; --accent-soft:#1d3329; --warn:#f08c63; --warn-soft:#3a241b; --note:#e2bf5c; --note-soft:#332c17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131816; --paper:#1b211e; --ink:#e7ece9; --muted:#9daaa3; --line:#2e3833;
+  --accent:#4fc893; --accent-soft:#1d3329; --warn:#f08c63; --warn-soft:#3a241b; --note:#e2bf5c; --note-soft:#332c17; color-scheme:dark}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-top:40px;font-size:14px}
+nav.toc b{display:block;font-family:var(--display);font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 10px;border-radius:6px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);background:var(--accent-soft);outline:none}
+main{min-width:0;padding-top:40px}
+header.hero{padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.1em;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,42px);line-height:1.25;margin:8px 0 12px;text-wrap:balance}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.35;margin:0 0 6px;text-wrap:balance;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:var(--mono);font-size:15px;color:var(--accent);flex:none}
+h3{font-family:var(--display);font-weight:700;font-size:18px;margin:28px 0 6px}
+section{padding-block:44px 8px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+section:last-of-type{border-bottom:0}
+p{margin:8px 0;max-width:68ch}
+.sub{color:var(--muted);margin-top:0}
+ol.steps{margin:14px 0;padding-left:1.4em;display:grid;gap:6px;max-width:68ch}
+ol.steps li::marker{font-family:var(--mono);color:var(--accent)}
+ul{padding-left:1.2em;max-width:68ch}
+.ui{font-family:var(--body);font-weight:600;font-size:.9em;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:1px 7px;white-space:nowrap}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+figure{margin:18px 0 6px}
+figure button{all:unset;cursor:zoom-in;display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper)}
+figure button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+figure img{display:block;width:100%;height:auto}
+figure.clip video{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#000;aspect-ratio:2190/1052}
+.vtag{display:inline-block;font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:0 6px;margin-right:6px}
+.speed{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.speed button{font:600 13px var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 12px;cursor:pointer}
+.speed button[aria-pressed="true"]{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:6px}
+.callout{border-radius:8px;padding:12px 16px;margin:16px 0;max-width:72ch;font-size:15px}
+.callout strong{font-family:var(--display)}
+.callout.tip{background:var(--accent-soft)}
+.callout.warn{background:var(--warn-soft)}
+.callout.warn strong{color:var(--warn)}
+.callout.note{background:var(--note-soft)}
+.callout.note strong{color:var(--note)}
+.callout p{margin:4px 0}
+/* 흐름도 */
+.flow{display:grid;gap:10px;margin:24px 0 8px;font-size:14.5px}
+.flow .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow .box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-weight:500}
+.flow .arrow{color:var(--muted)}
+.flow .branch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flow .lane{border-radius:10px;padding:12px;display:grid;gap:8px;align-content:start}
+.flow .lane.ok{background:var(--accent-soft)}
+.flow .lane.no{background:var(--warn-soft)}
+.flow .lane h4{margin:0;font-family:var(--display);font-size:14px}
+.flow .lane.ok h4{color:var(--accent)} .flow .lane.no h4{color:var(--warn)}
+.flow .lane .box{font-size:14px}
+/* 표 */
+.tbl{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--display);font-size:13px;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:1px 10px;white-space:nowrap}
+.pill.no{background:var(--warn-soft);color:var(--warn)} .pill.ok{background:var(--accent-soft);color:var(--accent)}
+/* 복사 블록 */
+.copy{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0;max-width:72ch}
+.copy pre{margin:0;white-space:pre-wrap;font-family:var(--body);font-size:15px;line-height:1.75}
+.copy button{position:absolute;top:10px;right:10px;font:600 13px var(--body);color:var(--accent);background:var(--accent-soft);border:0;border-radius:6px;padding:5px 10px;cursor:pointer}
+.copy button:focus-visible{outline:2px solid var(--accent)}
+/* 체크리스트 */
+.check{list-style:none;padding:0;display:grid;gap:8px;max-width:72ch}
+.check li{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.check input{margin-top:6px;accent-color:var(--accent);flex:none}
+.check label{cursor:pointer}
+/* 확대 보기 */
+dialog{border:0;padding:0;max-width:min(96vw,1800px);background:transparent}
+dialog::backdrop{background:rgba(0,0,0,.78)}
+dialog img{display:block;max-width:100%;max-height:92vh;border-radius:6px}
+.privacy{font-size:13px;color:var(--muted);margin-top:14px}
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{position:static;padding-top:24px}
+  nav.toc ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  main{padding-top:16px}
+}
+@media (max-width:520px){.flow .branch{grid-template-columns:1fr} nav.toc ol{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>figure.clip video{aspect-ratio:1440/608}</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav class="toc" aria-label="목차">
+  <b>목차</b>
+  <ol>
+    <li><a href="#flow">전체 흐름</a></li>
+    <li><a href="#p1">1. 자동등록 새 버전</a></li>
+    <li><a href="#p2">2. 확장 프로그램 다시 넣기</a></li>
+    <li><a href="#p3">3. 셀러들의 수다 새 버전</a></li>
+    <li><a href="#s1">4. 꼬리물기 시트 열기</a></li>
+    <li><a href="#s2">5. 지칭 단어 거르기</a></li>
+    <li><a href="#s3">6. 첫 페이지 보기</a></li>
+    <li><a href="#s4">7. 찾은 상품 기록</a></li>
+    <li><a href="#s5">8. 카테고리</a></li>
+    <li><a href="#s6">9. 제조사·브랜드</a></li>
+    <li><a href="#s7">10. 다 본 키워드 표시</a></li>
+    <li><a href="#s8">11. 다음 꼬리물기</a></li>
+    <li><a href="#s9">12. 카탈로그 담기·대량등록</a></li>
+    <li><a href="#checklist">체크리스트</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">BEAUTYSELL · 실습 자료</div>
+  <h1>프로그램 업데이트하고, 꼬리물기 따라하기</h1>
+  <p class="lead">자동등록 프로그램·셀러들의 수다를 새 버전으로 바꾸는 방법과, 네배소로 찾은 상품 하나에서 꼬리물기를 이어 가는 방법을 실제 원격 실습 화면 그대로 정리했습니다. 처음 한 번만 순서대로 따라 해 보시면 그다음부터는 같은 동작의 반복입니다.</p>
+  <div class="speed" role="group" aria-label="영상 재생 속도">영상 재생 속도 <button type="button" data-rate="1" aria-pressed="false">1배</button><button type="button" data-rate="1.5" aria-pressed="true">1.5배</button><button type="button" data-rate="2" aria-pressed="false">2배</button></div>
+  <p class="privacy">원격 연결 코드, 온라인 사무실 접속 정보, 공유 설정 창의 이메일, 개인 사서함 번호가 나오는 부분은 영상에서 빼거나 가렸습니다. 영상은 소리 없이 화면만 담았습니다.</p>
+</header>
+
+<section id="flow">
+  <h2>전체 흐름</h2>
+  <p class="sub">앞부분은 프로그램 준비, 뒷부분이 꼬리물기 본 작업입니다. 프로그램은 쓰다가 안 될 때만 업데이트하시면 됩니다.</p>
+  <div class="flow" role="img" aria-label="프로그램 준비: 자동등록 새 버전 설치, 확장 프로그램 다시 넣기, 셀러들의 수다 새 버전. 꼬리물기: 지칭 단어, 카테고리, 제조사, 브랜드를 왼쪽부터 순서대로 검색해 첫 페이지를 보고, 찾으면 시트에 기록, 다 본 키워드는 빨간 글씨, 찾은 상품은 카탈로그 담기 후 자기 전 대량등록">
+    <div class="row">
+      <span class="box">자동등록 새 버전 설치</span><span class="arrow">→</span>
+      <span class="box">확장 프로그램 다시 넣기</span><span class="arrow">→</span>
+      <span class="box">셀러들의 수다 새 버전</span>
+    </div>
+    <div class="row">
+      <span class="box">꼬리물기 시트 열기</span><span class="arrow">→</span>
+      <span class="box">지칭 단어</span><span class="arrow">→</span>
+      <span class="box">카테고리</span><span class="arrow">→</span>
+      <span class="box">제조사</span><span class="arrow">→</span>
+      <span class="box">브랜드</span>
+    </div>
+    <div class="branch">
+      <div class="lane ok">
+        <h4>상품을 찾았다</h4>
+        <span class="box">카탈로그명 아래 줄에 붙여넣기 + 날짜 + 검색한 단어</span>
+        <span class="box">자동등록 → 이 카탈로그 담기</span>
+        <span class="box">자기 전 대량등록 시작</span>
+      </div>
+      <div class="lane no">
+        <h4>그 키워드를 다 봤다</h4>
+        <span class="box">키워드 글자를 빨간색으로</span>
+        <span class="box">오른쪽 다음 칸으로 이동</span>
+        <span class="box">다 끝나면 가장 마지막에 찾은 상품으로 다음 꼬리물기</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="p1">
+  <h2><span class="n">01</span>자동등록 프로그램 새 버전 설치</h2>
+  <p>쓰다가 <b>안 되는 게 생기면 먼저 업데이트</b>를 해 보고, 그래도 안 되면 그때 알려 주세요. 수강생마다 컴퓨터 환경이 달라 프로그램은 계속 수정되고 있습니다. 불편한 게 없으면 매번 새로 받을 필요는 없습니다.</p>
+  <ol class="steps">
+    <li>자동등록 프로그램 창의 <span class="ui">새 버전 다운로드</span>를 누르면 다운로드 링크로 들어갑니다. 처음 자동등록 프로그램을 깔았을 때처럼 내려받습니다.</li>
+    <li>받은 압축 파일을 <b>두 번 클릭</b>해 압축을 풉니다.</li>
+    <li>안에 있는 설치 파일을 실행합니다. 파란 경고 창이 뜨면 <span class="ui">추가 정보</span> → <span class="ui">실행</span>.</li>
+    <li>“허용하시겠어요?” 창이 뜨면 <span class="ui">예</span>를 누르고 잠시 기다립니다.</li>
+    <li>설치 완료 창이 뜨면 <span class="ui">확인</span>. 이 창이 설명서이기도 해서 순서대로만 따라 해도 됩니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/01_installer.jpg" alt="다운로드 폴더에서 압축을 푼 셀수다 자동등록 설치 파일" loading="lazy"></button>
+  <figcaption>압축을 풀면 나오는 설치 파일(응용 프로그램)을 실행합니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k01_install.mp4" poster="vid/k01_install.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>압축 풀기 → 설치 파일 실행 → 설치 완료 (1분 32초)</figcaption></figure>
+</section>
+
+<section id="p2">
+  <h2><span class="n">02</span>크롬 확장 프로그램 다시 넣기</h2>
+  <ol class="steps">
+    <li>크롬 오른쪽 위 <span class="ui">퍼즐 모양</span> → <span class="ui">확장 프로그램 관리</span>.</li>
+    <li>기존에 설치돼 있던 자동등록 확장 프로그램은 <b>삭제</b>합니다.</li>
+    <li><span class="ui">압축해제된 확장 프로그램 로드</span>를 누릅니다.</li>
+    <li><span class="ui">내 PC</span> → <span class="ui">C 드라이브</span> → <span class="ui">셀수다 자동등록</span> → <span class="ui">확장 프로그램</span> 폴더를 고르고 <span class="ui">폴더 선택</span>.</li>
+    <li>목록에 다시 들어온 걸 확인하고, 확장 프로그램을 켜 봤을 때 위쪽에 새 버전 안내가 더 이상 안 뜨면 최신 버전입니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/02_load_unpacked.jpg" alt="확장 프로그램 관리 화면과 폴더 선택 창" loading="lazy"></button>
+  <figcaption>압축해제된 확장 프로그램 로드 → 폴더 선택 창.</figcaption></figure>
+  <figure class="clip"><video src="vid/k02_ext_reload.mp4" poster="vid/k02_ext_reload.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>확장 프로그램 관리 → 기존 삭제 → 폴더 다시 넣기 → 확인 (1분 24초)</figcaption></figure>
+</section>
+
+<section id="p3">
+  <h2><span class="n">03</span>셀러들의 수다 새 버전 설치</h2>
+  <ol class="steps">
+    <li>공유 문서함의 <span class="ui">셀러들의수다</span> 폴더에서 설치 파일(.exe)을 내려받습니다.</li>
+    <li>두 번 클릭 → <span class="ui">추가 정보</span> → <span class="ui">실행</span>. 바로 설치됩니다.</li>
+  </ol>
+  <div class="callout tip"><strong>기존 버전은 지우지 않아도 됩니다.</strong><p>셀러들의 수다는 그 위에 덮어씌워지는 방식이라 따로 삭제할 필요가 없습니다. (자동등록 확장 프로그램만 지우고 다시 넣습니다.)</p></div>
+  <figure><button type="button" data-zoom><img src="img/03_selsuda_drive.jpg" alt="구글 드라이브 셀러들의수다 폴더의 설치 파일" loading="lazy"></button>
+  <figcaption>셀러들의수다 폴더. 윈도우는 .exe 파일을 받습니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k03_selsuda_install.mp4" poster="vid/k03_selsuda_install.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>설치 파일 다운로드 → 실행 → 설치 (2분)</figcaption></figure>
+
+  <h3>새 버전에서 알아 둘 것</h3>
+  <ul>
+    <li><b>온라인 사무실</b>: 특강 때 안내한 온라인 사무실에 여기서 바로 입장할 수 있습니다. <span class="ui">나중에 할게요</span>를 눌러도 왼쪽 탭에서 다시 들어갈 수 있습니다.</li>
+    <li><b>공동구매</b>: 올라온 상품마다 “내가 판매했을 때 이 정도 마진이 남는다”가 같이 표시됩니다.</li>
+    <li><b>주소 확인</b>: 위탁 발송은 필살기처럼 아껴 쓰는 방법입니다. 위탁으로 보낼 때 주소지가 의심스러우면 여기에 검색해 보세요. 그 주소에 사업자로 신고된 내역이 있으면 나옵니다.</li>
+  </ul>
+  <figure><button type="button" data-zoom><img src="img/04_groupbuy.jpg" alt="셀러들의 수다 새 공동구매 안내 창, 예상 마진 표시" loading="lazy"></button>
+  <figcaption>공동구매 안내 창. 1건 발송 기준 예상 마진이 함께 나옵니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/05_address.jpg" alt="셀러들의 수다 고객 주소지 확인 창" loading="lazy"></button>
+  <figcaption>고객 주소지 확인. 주소를 넣고 확인을 누릅니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k04_selsuda_tabs.mp4" poster="vid/k04_selsuda_tabs.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>공동구매 안내 → 주소 확인 창 (55초)</figcaption></figure>
+</section>
+
+<section id="s1">
+  <h2><span class="n">04</span>꼬리물기 시트 열기</h2>
+  <ol class="steps">
+    <li>구글 첫 화면 오른쪽 위 <span class="ui">점 9개</span> → <span class="ui">스프레드시트</span>로 들어갑니다. “어디로 들어가는지 헷갈린다”면 이 길로 가시면 됩니다.</li>
+    <li>목록에서 <span class="ui">꼬리물기 양식</span>을 엽니다.</li>
+    <li>사본을 여러 개 만들었다면 <b>빈 사본·잘못 만든 사본은 지우고 하나만</b> 남깁니다. 판매장부 사본과 헷갈리지 않게 이름을 확인하세요.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/06_sheet_list.jpg" alt="구글 스프레드시트 목록" loading="lazy"></button>
+  <figcaption>스프레드시트 목록. 꼬리물기 양식과 판매장부 사본이 섞여 있었습니다.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/07_sheet.jpg" alt="꼬리물기 양식 시트, 규칙과 찾은 키워드·일자·카탈로그명·지칭하는 단어·카테고리·제조사·브랜드 열" loading="lazy"></button>
+  <figcaption>꼬리물기 시트. 위쪽 규칙, 아래 노란 줄이 기록 칸입니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k05_sheet_open.mp4" poster="vid/k05_sheet_open.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>스프레드시트 → 꼬리물기 양식 열기 → 불필요한 사본 정리 (1분 28초)</figcaption></figure>
+  <div class="callout note"><strong>시트는 공유 링크로 보내 주세요.</strong><p>오른쪽 위 <span class="ui">공유</span> → 일반 액세스 <b>링크가 있는 모든 사용자</b> → <span class="ui">링크 복사</span>. 이 링크가 있어야 시트를 보고 첨삭해 드릴 수 있습니다.</p></div>
+</section>
+
+<section id="s2">
+  <h2><span class="n">05</span>지칭 단어부터: 한 브랜드만 나오면 지우기</h2>
+  <p class="sub">꼬리물기는 시트의 <b>왼쪽에서 오른쪽으로</b> 순서대로 봅니다. 지칭 단어 → 카테고리 → 제조사 → 브랜드.</p>
+  <ol class="steps">
+    <li>지칭 단어 칸의 <b>맨 앞 단어</b>부터 네이버 가격비교에 검색합니다. 예: <b>후코테놀 크림</b>.</li>
+    <li>첫 페이지를 봤을 때 <b>그 브랜드(마리브) 제품만 나오면</b> 이 단어로는 꼬리물기를 하지 않습니다. 그 브랜드만 쓰는 고유한 말이라 다른 브랜드 상품이 걸리지 않기 때문입니다. 사람들이 많이 찾고 여러 브랜드가 함께 쓰는 단어여야 손님이 타고 들어옵니다.</li>
+    <li>그 단어를 드래그하고 툴바의 <span class="ui">취소선</span>(S에 줄 그은 아이콘)을 누릅니다. “이 키워드는 검색하지 않는다, 중복만 뜬다”는 표시입니다.</li>
+    <li>다음 단어 <b>해초 크림</b>도 검색 → 역시 마리브만 → 취소선.</li>
+    <li><b>크림 70ml</b>는 여러 브랜드가 잘 나옵니다 → 이 단어로 꼬리물기를 합니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/08_search_word.jpg" alt="네이버 가격비교에 후코테놀 크림 검색" loading="lazy"></button>
+  <figcaption>지칭 단어 첫 번째, 후코테놀 크림 검색.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/09_one_brand.jpg" alt="검색 결과 첫 페이지에 마리브 제품만 나오는 화면" loading="lazy"></button>
+  <figcaption>첫 페이지가 전부 마리브 → 이 단어는 취소선.</figcaption></figure>
+  <figure class="clip"><video src="vid/k06_keyword_check.mp4" poster="vid/k06_keyword_check.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>후코테놀 크림 → 해초 크림 → 취소선 → 크림 70ml (2분 22초)</figcaption></figure>
+  <div class="callout warn"><strong>이 판단은 지칭 단어에서만 합니다.</strong><p>“검색해서 같은 제품만 나오면 할 필요 없다”는 기준은 지칭 단어 칸에만 씁니다. 지칭 단어도 상품명 그대로 <b>띄어쓰기</b>까지 맞춰 적어 주세요.</p></div>
+</section>
+
+<section id="s3">
+  <h2><span class="n">06</span>첫 페이지 40개만, 4배수 때처럼 마진 보기</h2>
+  <ol class="steps">
+    <li>네배소 때 바꿨던 설정(<b>해외직구 제외, 80개씩 보기</b>)은 <b>꼬리물기 때는 건드리지 않습니다.</b> 검색한 그대로 둡니다.</li>
+    <li>첫 페이지에 나온 <b>40개</b>만, 4배수 할 때처럼 카탈로그를 에누리에 검색해 마진이 남는지 봅니다.</li>
+    <li>첫 페이지 맨 아래까지 봤으면 그 키워드는 끝입니다. 사람들은 2페이지까지 잘 넘어가지 않습니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/10_first_page.jpg" alt="크림 70ml 검색 결과 첫 페이지, 여러 브랜드 상품" loading="lazy"></button>
+  <figcaption>크림 70ml 첫 페이지. 여러 브랜드가 섞여 나옵니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k07_first_page.mp4" poster="vid/k07_first_page.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>크림 70ml 검색 → 첫 페이지 끝까지 내려 보기 (55초)</figcaption></figure>
+</section>
+
+<section id="s4">
+  <h2><span class="n">07</span>찾은 상품은 바로 아래 줄에 기록</h2>
+  <ol class="steps">
+    <li>마진 남는 상품을 찾으면 <b>카탈로그명을 복사해 바로 아래 줄</b>에 붙여 넣습니다.</li>
+    <li><span class="ui">일자</span>에 오늘 날짜를 씁니다.</li>
+    <li><span class="ui">찾은 키워드</span>에는 <b>실제로 검색한 단어</b>(예: 크림 70ml)를 그대로 씁니다.</li>
+  </ol>
+  <div class="callout note"><strong>왜 검색한 단어를 적나요?</strong><p>그래야 나중에 시트만 보고도 “잘하셨구나” 또는 “여기서 어려우셨구나”를 판단해 첨삭해 드릴 수 있습니다.</p></div>
+  <figure><button type="button" data-zoom><img src="img/11_record.jpg" alt="꼬리물기 시트에 지칭 단어 두 개 취소선, 아래 줄에 예시 상품 카탈로그명 기록" loading="lazy"></button>
+  <figcaption>취소선 2개 + 크림 70ml만 살아 있는 상태. 4번째 줄은 찾았다고 가정한 예시입니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k08_record.mp4" poster="vid/k08_record.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>카탈로그명 붙여넣기 → 날짜 → 찾은 키워드 (1분)</figcaption></figure>
+</section>
+
+<section id="s5">
+  <h2><span class="n">08</span>카테고리: 무조건 검색으로</h2>
+  <ol class="steps">
+    <li>4배수 때는 카테고리 메뉴로 들어갔지만, <b>꼬리물기는 무조건 검색 기반</b>입니다. 카테고리 칸의 단어(예: <b>크림</b>)를 검색창에 칩니다.</li>
+    <li>똑같이 <b>첫 페이지 맨 마지막까지만</b> 봅니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/12_category.jpg" alt="네이버 가격비교 카테고리 메뉴가 열린 화면" loading="lazy"></button>
+  <figcaption>카테고리 메뉴로 들어가지 말고, 검색창에 단어를 칩니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k09_category.mp4" poster="vid/k09_category.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>카테고리 단어 검색 → 첫 페이지 (1분 21초)</figcaption></figure>
+</section>
+
+<section id="s6">
+  <h2><span class="n">09</span>제조사·브랜드: 첫 페이지 다음에 세부 카테고리까지</h2>
+  <p class="sub">제조사와 브랜드만 한 단계가 더 있습니다.</p>
+  <ol class="steps">
+    <li>제조사(또는 브랜드)를 검색하고 <b>첫 페이지를 끝까지</b> 봅니다.</li>
+    <li>위쪽 카테고리 줄의 <span class="ui">화살표</span>를 눌러 세부 카테고리를 펼칩니다.</li>
+    <li>상품 수가 <b>1,000개 넘는 카테고리</b>를 누르고 첫 페이지를 봅니다. 예: 화장품/미용 → 헤어케어 → 탈모케어.</li>
+    <li>더 이상 1,000개 넘는 게 없으면 뒤로 가서 안 본 곳(스킨케어, 마스크/팩 …)을 같은 방식으로 봅니다.</li>
+    <li>방금 본 제품이 또 나오고 <b>확실히 기억나면</b> 넘어가도 됩니다.</li>
+    <li>브랜드도 똑같이 합니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/13_maker_sub.jpg" alt="제조사 검색 결과의 세부 카테고리 목록과 상품 수" loading="lazy"></button>
+  <figcaption>제조사 검색 → 세부 카테고리별 상품 수. 1,000개 넘는 곳만 들어갑니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k10_maker.mp4" poster="vid/k10_maker.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>제조사 검색 → 세부 카테고리 펼치기 (1분)</figcaption></figure>
+</section>
+
+<section id="s7">
+  <h2><span class="n">10</span>다 본 키워드는 빨간 글씨</h2>
+  <ol class="steps">
+    <li>한 키워드를 첫 페이지(제조사·브랜드는 세부 카테고리까지) 다 봤으면 그 칸을 선택합니다.</li>
+    <li>툴바의 <span class="ui">A</span>(밑줄 있는 A, 텍스트 색상) → <b>빨간색</b>.</li>
+    <li>오른쪽 다음 칸으로 넘어갑니다.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/14_text_color.jpg" alt="구글 시트 툴바의 텍스트 색상 버튼" loading="lazy"></button>
+  <figcaption>툴바의 텍스트 색상(A) 버튼. 칸 배경이 아니라 글자 색을 바꿉니다.</figcaption></figure>
+  <figure class="clip"><video src="vid/k11_red.mp4" poster="vid/k11_red.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>다 본 키워드 빨간 글씨 → 다음 꼬리물기 순서 설명 (2분 9초)</figcaption></figure>
+</section>
+
+<section id="s8">
+  <h2><span class="n">11</span>다음 꼬리물기는 가장 마지막에 찾은 상품에서</h2>
+  <p>여기까지 보면 높은 확률로 상품이 <b>2~10개</b>쯤 찾아집니다. 다음 꼬리물기는 항상 <b>가장 최근(마지막)에 찾은 상품</b>에서 시작합니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>이번에 찾은 상품</th><th>다음 꼬리물기 시작점</th></tr></thead>
+    <tbody>
+      <tr><td>2개</td><td>2번째 상품</td></tr>
+      <tr><td>그 상품에서 다시 7개</td><td>7번째 상품</td></tr>
+    </tbody>
+  </table></div>
+  <p>중간에 붕 뜬 상품들은 나중에 다시 보니 걱정하지 않으셔도 됩니다. 시트 규칙 (6) “매일 가장 최근에 찾은 단어의 키워드부터 꼬리물기를 하라”와 같은 뜻입니다.</p>
+  <figure><button type="button" data-zoom><img src="img/15_last_found.jpg" alt="시트에 찾은 상품 1~7번을 예시로 적어 둔 화면" loading="lazy"></button>
+  <figcaption>예시로 1~7번을 적어 둔 화면. 7개를 찾았으면 7번째에서 다음 꼬리물기.</figcaption></figure>
+</section>
+
+<section id="s9">
+  <h2><span class="n">12</span>찾은 상품 올리기: 카탈로그 담기 → 대량등록</h2>
+  <ol class="steps">
+    <li>찾은 상품의 카탈로그를 네이버 가격비교에서 검색해 엽니다.</li>
+    <li>카탈로그가 켜진 화면에서 <b>자동등록 프로그램</b>(크롬 확장)을 켭니다.</li>
+    <li><span class="ui">이 카탈로그 담기</span> → 담긴 목록에 들어갑니다.</li>
+    <li>밤에 자기 전에 <span class="ui">대량등록 시작</span>만 누릅니다. <b>스마트스토어 로그인</b>이 되어 있어야 합니다. 시간이 걸리니 돌아가는 동안 PC는 그대로 둡니다.</li>
+    <li>등록이 되면 목록에 <b>체크 표시</b>가 나옵니다. 어떤 이유로 안 되면 그 자리에 <b>사유</b>가 나오니, 그 사유를 알려 주세요.</li>
+  </ol>
+  <figure><button type="button" data-zoom><img src="img/16_catalog_add.jpg" alt="카탈로그 페이지에서 자동등록 프로그램의 이 카탈로그 담기 버튼" loading="lazy"></button>
+  <figcaption>카탈로그 페이지 + 자동등록 프로그램 → 이 카탈로그 담기.</figcaption></figure>
+  <figure><button type="button" data-zoom><img src="img/17_bulk_start.jpg" alt="담긴 목록 1개와 대량등록 시작 버튼" loading="lazy"></button>
+  <figcaption>담긴 목록 1개 → 대량등록 시작.</figcaption></figure>
+  <figure class="clip"><video src="vid/k12_register.mp4" poster="vid/k12_register.jpg" controls muted playsinline preload="none"></video>
+  <figcaption><span class="vtag">영상</span>카탈로그 열기 → 이 카탈로그 담기 → 대량등록 시작 (1분 15초)</figcaption></figure>
+</section>
+
+<section id="checklist">
+  <h2>체크리스트</h2>
+  <p class="sub">체크 표시는 이 브라우저에만 저장됩니다.</p>
+  <ul class="check">
+    <li><input type="checkbox" id="c1"><label for="c1">지칭 단어를 왼쪽부터 검색했고, 한 브랜드만 나오는 단어에는 취소선을 그었다</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2">80개 보기·해외직구 제외 설정을 건드리지 않고 첫 페이지(40개)만 봤다</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3">카테고리도 메뉴가 아니라 검색으로 봤다</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4">제조사·브랜드는 첫 페이지 후 1,000개 넘는 세부 카테고리까지 봤다</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5">찾은 상품은 카탈로그명·날짜·실제 검색한 단어를 적었다</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6">다 본 키워드는 빨간 글씨로 바꿨다</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7">다음 꼬리물기는 가장 마지막에 찾은 상품에서 시작했다</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8">찾은 상품은 카탈로그 담기 후 자기 전 대량등록을 눌렀다 (실패 사유는 알려 주기)</label></li>
+    <li><input type="checkbox" id="c9"><label for="c9">3개를 찾으면 시트 공유 링크와 함께 “찾았다”고 카톡 보냈다</label></li>
+  </ul>
+  <p class="sub" style="margin-top:20px">처음엔 1시간에 3~7개 정도 찾는 게 평균입니다. 손에 익으면 금방 빨라집니다.</p>
+</section>
+</main>
+</div>
+
+<dialog id="zoom" aria-label="확대 보기"><img alt=""></dialog>
+
+<script>
+(function(){
+  var dlg=document.getElementById('zoom'), big=dlg.querySelector('img');
+  document.querySelectorAll('[data-zoom]').forEach(function(b){
+    b.addEventListener('click',function(){var i=b.querySelector('img');big.src=i.src;big.alt=i.alt;
+      if(dlg.showModal){dlg.showModal();}});
+  });
+  dlg.addEventListener('click',function(){dlg.close();});
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var el=document.getElementById(btn.getAttribute('data-copy'));var txt=el.textContent;
+      function done(){btn.textContent='복사됨';setTimeout(function(){btn.textContent='복사';},1600);}
+      function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='선택됨 · Ctrl+C';}
+      try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(e){fallback();}
+    });
+  });
+  var rate=1.5;
+  function applyRate(){document.querySelectorAll('video').forEach(function(v){v.playbackRate=rate;v.defaultPlaybackRate=rate;});}
+  document.querySelectorAll('video').forEach(function(v){v.addEventListener('play',function(){v.playbackRate=rate;});});
+  document.querySelectorAll('[data-rate]').forEach(function(b){b.addEventListener('click',function(){rate=parseFloat(b.dataset.rate);
+    document.querySelectorAll('[data-rate]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});applyRate();});});
+  applyRate();
+  var KEY='beautysell-kkori-check';
+  var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  document.querySelectorAll('.check input').forEach(function(cb){
+    if(saved[cb.id])cb.checked=true;
+    cb.addEventListener('change',function(){saved[cb.id]=cb.checked;try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}});
+  });
+})();
+</script>
+
+</body>
+</html>

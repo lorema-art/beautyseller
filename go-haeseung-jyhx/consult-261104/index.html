@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="2026년 11월 4일 고해승 대표님 4배소싱·꼬리물기 실습 내용을 정리한 리포트입니다.">
+<title>고해승 대표님 상담 리포트 | BEAUTYSELL</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#f7f5f1; --paper:#ffffff; --ink:#1d1b18; --sub:#5f5a52; --line:#e6e1d8;
+  --accent:#2f6b4f; --accent-soft:#e7f0ea; --warn:#9a5b13; --warn-soft:#fbf1e3;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#141412; --paper:#1d1c1a; --ink:#f0ede7; --sub:#a9a398; --line:#33312d;
+    --accent:#7cc3a0; --accent-soft:#1f2d26; --warn:#e3a95c; --warn-soft:#2e2519;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 32px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}
+blockquote{margin:28px 0 8px;font-size:30px;line-height:1.35;font-weight:800;letter-spacing:-.02em}
+.q-by{color:var(--sub);font-size:14px}
+h1{font-size:22px;margin:40px 0 4px;letter-spacing:-.01em}
+.meta{color:var(--sub);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-size:26px;letter-spacing:-.02em}
+.stat span{color:var(--sub);font-size:13px}
+.notice{margin:24px 0 0;background:var(--warn-soft);color:var(--warn);border-radius:12px;
+  padding:12px 16px;font-size:14px;font-weight:600}
+section{padding:36px 0;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--sub);margin:0 0 20px}
+.cards{display:grid;gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h3{margin:0 0 6px;font-size:15px;color:var(--accent)}
+.card p{margin:0}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin:0 0 12px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+summary::-webkit-details-marker{display:none}
+.num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  font-weight:800;font-size:14px;display:grid;place-items:center;margin-top:2px}
+.st b{display:block;font-size:17px}
+.st em{display:block;font-style:normal;color:var(--sub);font-size:14px;margin-top:2px}
+.chev{margin-left:auto;color:var(--sub);transition:transform .2s;flex:none}
+details[open] .chev{transform:rotate(180deg)}
+.body{padding:0 20px 20px 62px}
+.body h4{margin:16px 0 4px;font-size:13px;color:var(--sub);letter-spacing:.04em}
+.body ul{margin:0;padding-left:18px}
+.body li{margin:4px 0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;
+  background:var(--warn-soft);color:var(--warn);margin-left:6px;vertical-align:2px}
+.toggle-all{background:none;border:1px solid var(--line);color:var(--sub);border-radius:99px;
+  padding:6px 14px;font:inherit;font-size:13px;cursor:pointer;margin-bottom:14px}
+.flow{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
+.flow div{background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700}
+.flow div.end{background:var(--warn-soft);color:var(--warn)}
+.flow i{align-self:center;color:var(--sub);font-style:normal}
+.day{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 4px}
+.day div{background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:10px 8px;text-align:center;font-size:13px;font-weight:700;line-height:1.4}
+.day div b{display:block;font-size:18px}
+.day div.etc{background:var(--warn-soft);color:var(--warn)}
+.todo{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.todo li{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px}
+.todo input{width:18px;height:18px;margin-top:4px;accent-color:var(--accent);flex:none}
+.todo b{display:block}
+.todo small{color:var(--sub);font-size:13px}
+.who{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);
+  border-radius:99px;padding:1px 8px;margin-left:4px}
+.next{background:var(--accent);color:#fff;border-radius:14px;padding:18px 20px}
+.next b{display:block;font-size:20px;letter-spacing:-.01em}
+.next span{opacity:.85;font-size:14px}
+@media (prefers-color-scheme: dark){.next{color:#10201a}}
+ol.qs{padding-left:20px;margin:0}
+ol.qs li{margin:8px 0}
+footer{padding:32px 0 56px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+@media (max-width:560px){
+  blockquote{font-size:24px}
+  .stats{gap:8px}.stat{padding:12px}.stat b{font-size:21px}
+  .body{padding:0 16px 18px 16px}
+  .day{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">BEAUTYSELL 상담 리포트</div>
+  <blockquote>“컨설팅 한 번 하고 이 속도면<br>굉장히 빠르신 거예요.”</blockquote>
+  <div class="q-by">상담 중 뷰셀이 드린 말씀</div>
+
+  <h1>고해승 대표님 4배소싱·꼬리물기 실습</h1>
+  <div class="meta">2026년 11월 4일 · 고해승 대표님, 뷰셀 · 원격 상담</div>
+
+  <div class="stats">
+    <div class="stat"><b>31분</b><span>상담 시간</span></div>
+    <div class="stat"><b>2개</b><span>4배소싱으로 찾은 상품</span></div>
+    <div class="stat"><b>30초~1분</b><span>상품 1개 보는 속도</span></div>
+  </div>
+  <div class="notice">고해승 대표님 개인 상담 자료입니다. 외부 공유는 삼가 주세요.</div>
+</header>
+
+<section>
+  <h2>한눈에 보기</h2>
+  <p class="lead">바빠서 소싱은 아직 못 하셨고 오늘의 할인 상품만 올리신 상태였습니다. AI 결제 잔액이 마이너스여서 <b>자동충전</b>을 켜 드렸고, 카탈로그 없이 사입한 상품은 <b>카탈로그 없이 판매해 보기</b>로 했습니다. 이어서 <b>4배소싱</b>을 직접 해 보시며 상품 2개를 찾았고, 찾은 상품으로 <b>꼬리물기</b>를 하는 순서까지 배웠습니다. 한 상품 보는 데 30초~1분으로, 두 번째 컨설팅치고 매우 빠른 속도입니다.</p>
+  <div class="cards">
+    <div class="card"><h3>오늘 해결한 것</h3><p>AI 결제 <b>자동충전 ON</b>(8,000원 이하로 떨어지면 자동 결제). 카탈로그 없는 사입 상품 등록 방법 안내. 4배소싱에서 마진 남는 상품 2개 찾아 꼬리물기 시트에 기록.</p></div>
+    <div class="card"><h3>이번 주 집중</h3><p><b>꼬리물기</b>가 주력입니다. 시간이 한정적이어도 상품을 계속 찾아 올리는 것이 핵심이고, 웬만하면 <b>네이버 멤버십</b>에 가입하세요. 적립까지 계산하면 마진 나는 상품이 늘어납니다.</p></div>
+    <div class="card"><h3>요청하신 것</h3><p>상품이 많을 때 셀러들의 수다에 <b>엑셀로 한 번에 등록</b>하는 방법 → 이번 주 강의에서 보여 드리기로 했습니다. 아래 교육자료에도 영상으로 정리돼 있습니다.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>주제별 정리</h2>
+  <p class="lead">항목을 누르면 세부 내용이 열립니다.</p>
+  <button class="toggle-all" type="button" onclick="toggleAll(this)">모두 펼치기</button>
+
+  <details>
+    <summary><span class="num">1</span><span class="st"><b>AI 결제 잔액 — 자동충전 켜기</b><span class="tag">해결</span><em>“8,000원 이하로 떨어지면 알아서 결제가 돼요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>등록하다가 요금이 떨어져 선불 충전을 해 보셨는데, 카드 등록·결제가 됐는지 확실하지 않으셨습니다.</li>
+        <li>확인 방법: <b>자동등록 프로그램 → AI → 결제</b>. 결제가 잘 되어 있으면 잔액이 뜹니다. 상담 때는 <b>마이너스</b>였습니다.</li>
+        <li>매번 확인하기 번거로우니 <b>자동충전</b>을 켰습니다. 잔액이 8,000원 이하가 되면 자동 결제되고, 켠 뒤 약 30분 안에 결제될 예정이었습니다. 나중에 잔액이 플러스로 바뀌었는지 한 번 확인해 주세요.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">2</span><span class="st"><b>카탈로그 없는 사입 상품 — 일단 판매해 보기</b><span class="tag">주의</span><em>“저도 항상 카탈로그 기준으로만 사요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>사입한 상품(기기 1 + 날 11개 구성, 20박스, 15,000원에 구매)이 카탈로그가 없어 평소 방식으로는 등록이 안 됐습니다.</li>
+        <li>카탈로그가 없으면 판매가 원활하지 않지만 <b>무조건 안 팔리는 건 아닙니다</b>. 본사보다 싸면 판매는 됩니다.</li>
+        <li>선택지 두 가지: ① 전량 반품 ② 본사보다 저렴하게 등록해 판매. 원가를 약 16,000원으로 잡고 <b>약 23,600원</b>에 팔면 <b>약 3,000원</b>이 남는 계산이라 ②로 해 보기로 했습니다. 판매 수량이 아주 많은 상품은 아니라 가능해 보입니다.</li>
+        <li>등록 방법: 본사의 <b>네이버 판매 페이지 링크를 복사</b> → 자동등록 프로그램에 붙여넣기 → <b>자동상품등록</b>.</li>
+        <li>앞으로 사입은 <b>카탈로그가 있는 상품만</b> 하세요.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">3</span><span class="st"><b>4배소싱 — 네이버 먼저, 에누리로 확인</b><span class="tag">핵심</span><em>“약간 수학 문제 푸는 거랑 비슷해요. 안 나오면 바로 넘기기.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="flow"><div>에누리 검색 먼저 걸어두기</div><i>→</i><div>네이버 수량별 구성 가격</div><i>→</i><div>에누리 배송비 포함 → 파란 구성</div><i>→</i><div>카드할인 ON</div><i>→</i><div class="end">마진 없으면 패스</div></div>
+      <ul>
+        <li>화면 배치: <b>네이버는 왼쪽, 에누리는 오른쪽</b>, 화면의 3분의 2 정도 크기로.</li>
+        <li>에누리는 로딩이 느리니 <b>검색을 먼저 걸어 두고</b>, 네이버에서 아래로 내려 수량별 구성 가격을 1차로 봅니다. 가장 싼 구성(예: 4개짜리)을 개수로 나누고 → 배송비 3,000원 더하고 → 수수료 빼서 <b>1,000원 이상</b> 남는지 봅니다.</li>
+        <li>암산이 안 되면 <b>계산기를 하나 켜 두거나 마진계산기</b>를 쓰세요.</li>
+        <li>마스크팩처럼 낱장 포장 제품은 검색어를 ‘마스크’까지만 넣습니다.</li>
+        <li>범위 안에서 상품을 찾았더라도 <b>끝까지 다 봐야</b> 합니다. 탭은 <b>Ctrl+W</b>로 닫으면 빠릅니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">4</span><span class="st"><b>네이버 멤버십 슈퍼적립까지 계산하기</b><em>“멤버십은 웬만하면 가입하세요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>상품에 <b>Super</b> 표시가 있으면 멤버십 회원에게 포인트를 10% 더 줍니다. 적립액을 빼고 계산하면 마진 나는 상품이 늘어납니다.</li>
+        <li>예시 ①: 할인가 30,000원, 적립 4,500원 → 2개 구성이라 2로 나누면, 1개 팔 때 배송비·수수료를 빼도 약 1,000원이 남음 → <b>찾은 상품</b>.</li>
+        <li>예시 ②: 25,500원 → 최대 할인가 20,650원 − 슈퍼적립 3,097원 → 2로 나누면 개당 약 8,777원. 판매가를 최저가보다 10원 싸게 잡아도 마진이 남아 <b>등록 대상</b>.</li>
+        <li>대표님은 아직 멤버십 미가입 상태 — 가입을 권장드렸습니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">5</span><span class="st"><b>찾은 상품 기록하기 — 꼬리물기 시트</b><em>“이 순서를 우리가 맘대로 바꾸면 안 돼요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li>찾으면 바로 <b>카탈로그 담기</b>에 넣고, 상품명을 복사해 꼬리물기 시트에 붙여넣습니다.</li>
+        <li>같이 적을 것: <b>올릴 수량</b>, 찾은 방법(<b>4배소</b>), <b>오늘 날짜</b>. 시트는 자동 저장됩니다.</li>
+        <li>카테고리·제조사·브랜드는 카탈로그를 다시 찾아야 하니 <b>찾았을 때 미리</b> 적어 두면 편합니다.</li>
+        <li><b>지칭 단어</b> 만들기: 사람들이 부르는 이름이 메인 키워드(예: 크림). 브랜드(이니스프리)는 빼고, 띄어쓰기 한 덩어리씩 메인 키워드 외에 <b>하나만</b> 더해 만듭니다 — 그린티 크림, 씨드 크림, 히알루론산 크림, 크림 보습…</li>
+        <li>단어 <b>순서는 상품명 그대로</b>. 크림이 앞이고 진정이 뒤면 바꾸지 않습니다.</li>
+        <li>같은 키워드가 겹치면 <b>파란색</b>으로 칠합니다. 중복 키워드는 <b>3개월 동안 다시 보지 않습니다</b>.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">6</span><span class="st"><b>꼬리물기 순서</b><span class="tag">핵심</span><em>“꼬리에 꼬리를 문다라는 의미로 꼬리물기예요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="flow"><div>지칭 단어</div><i>→</i><div>카테고리</div><i>→</i><div>제조사</div><i>→</i><div class="end">브랜드</div></div>
+      <ul>
+        <li>시트에서 <b>왼쪽에서 오른쪽</b> 순서로 봅니다. 각 키워드는 검색 결과 <b>첫 페이지</b>를 다 보고, 다 본 키워드는 <b>빨간색</b>으로 칠합니다.</li>
+        <li>꼬리물기 화면 설정(한 페이지 개수 등)은 <b>절대 건드리지 마세요</b>.</li>
+        <li><b>카테고리</b>도 눌러서 들어가는 게 아니라 <b>반드시 검색해서</b> 봅니다.</li>
+        <li><b>제조사·브랜드</b>는 첫 페이지를 본 뒤 끝이 아니라, 왼쪽 세부 카테고리 중 <b>1,000개가 넘는 것</b>을 하나씩 눌러 각각 첫 페이지를 봅니다. (예: 화장품/미용 → 남성화장품 → 뒤로 → 색조메이크업 → 바디케어…)</li>
+        <li>다음 꼬리물기는 <b>가장 마지막(최근)에 찾은 상품</b>부터. 새로 나온 쪽에 할인이 더 있을 가능성이 높기 때문입니다.</li>
+        <li>퀴즈 정리: 2번 상품에서 6개를 찾으면 → 6번부터. 6번에서 아무것도 안 나오면 → 5번. 이렇게 <b>위로 한 칸씩</b> 올라갑니다. 1번까지 돌아가는 경우는 드뭅니다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="num">7</span><span class="st"><b>공동구매·대량 등록 질문</b><em>“의향 있으시면 몇 개를 신청해도 상관없어요.”</em></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>공동구매</b>는 리셋 시간이 따로 없고 24시간 중 수시로 올라옵니다. 전날 밤 10시~새벽 4시에 약 50개를 올렸는데 신청이 많지 않았습니다. 잔액을 충전해 두고 마음에 드는 건 바로 신청해서 올리시면 됩니다.</li>
+        <li>엑셀이 처음이라 어렵다고 하셨는데, 장부에는 숫자만 적는 정도라 엑셀을 많이 쓰지 않습니다.</li>
+        <li>궁금하셨던 건 <b>셀러들의 수다 배송요청 엑셀 대량등록</b>입니다. 상품명·수량·고객 연락처·주소만 복사해 넣으면 끝 — 이번 주 강의에서 보여 드리기로 했고, 아래 발주처리 교육자료 7번에 영상으로도 있습니다.</li>
+        <li>오늘의 할인에서 들어온 코카콜라 주문도 지금처럼 에누리로 검색해서 보면 되니, 이제 주문 넣는 건 어렵지 않으실 겁니다.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2>교육자료</h2>
+  <p class="lead">오늘 배운 내용과 질문하신 대량 등록을 따라 할 수 있는 자료입니다.</p>
+  <div class="cards">
+    <div class="card"><h3><a href="../../edu-quse/kkori-guide/" style="color:inherit">꼬리물기 따라하기 →</a></h3><p>지칭 단어 → 카테고리 → 제조사·브랜드 순서, 기록 방법, 다음 꼬리물기 고르는 법</p></div>
+    <div class="card"><h3><a href="../../edu-quse/order-guide/#s7" style="color:inherit">발주처리 따라하기 — 7. 배송요청 엑셀 대량등록 →</a></h3><p>템플릿 받기 → 붙여넣기 → 파일 등록 (영상 포함)</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>실행 항목</h2>
+  <p class="lead">체크 표시는 이 브라우저에서만 저장됩니다.</p>
+  <ul class="todo">
+    <li><input type="checkbox" data-k="a1"><div><b>AI 결제 잔액 플러스로 바뀌었는지 확인 <span class="who">고해승</span></b><small>자동등록 프로그램 → AI → 결제 · 자동충전 ON 상태</small></div></li>
+    <li><input type="checkbox" data-k="a2"><div><b>카탈로그 없는 사입 상품 등록 <span class="who">고해승</span></b><small>본사 네이버 판매 페이지 링크 → 자동상품등록 · 본사보다 저렴하게(약 23,600원)</small></div></li>
+    <li><input type="checkbox" data-k="a3"><div><b>네이버 멤버십 가입 <span class="who">고해승</span></b><small>슈퍼적립까지 마진 계산에 반영</small></div></li>
+    <li><input type="checkbox" data-k="a4"><div><b>오늘 찾은 2개 상품 등록·지칭 단어 만들기 <span class="who">고해승</span></b><small>카탈로그 담기 → 대량 등록, 시트에 수량·4배소·날짜</small></div></li>
+    <li><input type="checkbox" data-k="a5"><div><b>꼬리물기 계속 연습 <span class="who">고해승</span></b><small>마지막에 찾은 상품부터 · 다 본 키워드 빨간색, 중복은 파란색</small></div></li>
+    <li><input type="checkbox" data-k="a6"><div><b>공동구매 관심 상품 신청 <span class="who">고해승</span></b><small>잔액 충전해 두고 수시로 확인</small></div></li>
+    <li><input type="checkbox" data-k="a7"><div><b>배송요청 엑셀 대량등록 강의에서 시연 <span class="who">뷰셀</span></b><small>이번 주 강의</small></div></li>
+  </ul>
+</section>
+
+<section>
+  <h2>다음 일정</h2>
+  <div class="next"><b>이번 주 강의 — 대량 등록 시연</b><span>그 전까지 꼬리물기에 집중해서 상품을 계속 찾아 올려 주세요.</span></div>
+</section>
+
+<footer>
+  이 리포트는 2026년 11월 4일 상담 녹음(플라우드 자동 전사)을 바탕으로 정리했습니다. 전사 품질상 일부 숫자와 표현이 부정확할 수 있습니다.
+</footer>
+
+</div>
+<script>
+function toggleAll(btn){
+  var ds=document.querySelectorAll('details'), open=btn.dataset.open!=='1';
+  ds.forEach(function(d){d.open=open});
+  btn.dataset.open=open?'1':'0'; btn.textContent=open?'모두 접기':'모두 펼치기';
+}
+document.querySelectorAll('.todo input').forEach(function(c){
+  var key='gohaeseung261104-'+c.dataset.k;
+  try{c.checked=localStorage.getItem(key)==='1'}catch(e){}
+  c.addEventListener('change',function(){try{localStorage.setItem(key,c.checked?'1':'0')}catch(e){}});
+});
+</script>
+</body>
+</html>

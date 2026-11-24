@@ -79,6 +79,31 @@ details[open] .chev{transform:rotate(180deg)}
 ol.qs{padding-left:20px;margin:0}
 ol.qs li{margin:8px 0}
 footer{padding:32px 0 56px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+.manual-intro{font-size:18px}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:16px;counter-reset:st}
+.steps>li{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:20px;font-size:19px;line-height:1.75}
+.steps>li h3{margin:0 0 10px;font-size:23px;line-height:1.4;letter-spacing:-.01em;display:flex;gap:12px;align-items:flex-start}
+.steps>li h3::before{counter-increment:st;content:counter(st);flex:none;width:40px;height:40px;border-radius:50%;
+  background:var(--accent);color:var(--paper);font-size:21px;font-weight:800;display:grid;place-items:center}
+.steps p{margin:8px 0}
+.steps ul{margin:8px 0;padding-left:22px}
+.steps li li{margin:6px 0}
+.steps img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0 6px}
+.cap{font-size:15px;color:var(--sub)}
+.btn{display:inline-block;font-weight:800;border-radius:8px;padding:1px 10px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.careful{background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:12px 16px;font-weight:700;margin:12px 0 0}
+.fill{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:18px}
+.fill th,.fill td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.fill th{white-space:nowrap;color:var(--accent);width:38%}
+.print-btn{background:var(--accent);color:var(--paper);border:none;border-radius:12px;padding:12px 20px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;margin:4px 0 18px}
+.more{display:block;text-align:center;font-size:18px;font-weight:800;text-decoration:none;color:var(--accent);
+  border:2px solid var(--accent);border-radius:14px;padding:14px;margin-top:16px}
+@media print{
+  body{background:#fff;color:#000}
+  header,section:not(#manual),footer,.print-btn,.more{display:none}
+  section#manual{border:none;padding:0}
+  .steps>li{break-inside:avoid;border-color:#999}
+}
 @media (max-width:560px){
   blockquote{font-size:24px}
   .stats{gap:8px}.stat{padding:12px}.stat b{font-size:21px}
@@ -111,8 +136,110 @@ footer{padding:32px 0 56px;border-top:1px solid var(--line);color:var(--sub);fon
   <div class="cards">
     <div class="card"><h3>오늘 한 것</h3><p>셀러들의 수다 <b>오늘의 할인</b>에서 상품을 찜하고 → 같은 상품인지 확인 → 마진 계산 → 남는 상품만 <b>카탈로그 담기</b>. 세 개를 직접 해보셨고, 그중 <b>남는 2개</b>를 등록 목록에 담았습니다.</p></div>
     <div class="card"><h3>기억할 순서</h3><p><b>① 같은 상품인가</b>(영어 모델명) → <b>② 돈이 남는가</b>(마진 계산기) → <b>③ 남으면 담기</b>(초록 카메라). 가격부터 보지 않고 항상 ①번부터 봅니다.</p></div>
-    <div class="card"><h3>이번 주 숙제</h3><p>다른 건 하지 않고 <b>이 순서 하나만</b> 댁에서 혼자 할 수 있을 때까지 연습합니다. 오늘 녹음을 보내드리니 들으면서 따라 하시면 됩니다.</p></div>
+    <div class="card"><h3>이번 주 숙제</h3><p>다른 건 하지 않고 <b>이 순서 하나만</b> 댁에서 혼자 할 수 있을 때까지 연습합니다. 바로 아래 <b>‘혼자 따라 하는 순서’</b>를 보면서, 보내드리는 녹음을 들으며 따라 하시면 됩니다.</p></div>
   </div>
+</section>
+
+<section id="manual">
+  <h2>혼자 따라 하는 순서 · 오늘의 할인에서 상품 올리기</h2>
+  <p class="lead manual-intro">댁에서 이 순서대로 하나씩 따라 하시면 됩니다. 급하게 하지 않으셔도 됩니다. 사진은 어디를 누르는지 보여 주는 예시이고, 상품과 숫자는 그때그때 다릅니다. 사진이 작으면 사진을 누르면 크게 보입니다.</p>
+  <button class="print-btn" type="button" onclick="window.print()">이 순서만 종이로 인쇄하기</button>
+
+  <ol class="steps">
+    <li>
+      <h3>셀러들의 수다에서 ‘오늘의 할인’ 누르기</h3>
+      <p>셀러들의 수다를 켜고, <b>왼쪽 메뉴</b>에서 <span class="btn">오늘의 할인</span>을 누릅니다.</p>
+      <a href="img/05_hotdeal_list.jpg" target="_blank" rel="noopener"><img src="img/05_hotdeal_list.jpg" alt="셀러들의 수다 왼쪽 메뉴의 오늘의 할인과, 가운데에 열린 할인 상품 목록" loading="lazy"></a>
+      <p class="cap">왼쪽 메뉴 아래쪽에 ‘오늘의 할인’이 있습니다. 누르면 가운데에 상품 목록이 뜹니다. (사진의 ‘내 찜 0/3’은 예전 화면이고, 지금은 하루 7개까지 찜할 수 있습니다.)</p>
+    </li>
+
+    <li>
+      <h3>상품 하나 고르고 ‘찜하고 상품 보기’ 누르기</h3>
+      <ul>
+        <li>마우스를 목록 위에 두고 <b>가운데 바퀴를 아래로</b> 굴리면 목록이 내려갑니다.</li>
+        <li>올리고 싶은 상품을 <b>한 번</b> 누릅니다.</li>
+        <li>파란색 <span class="btn">찜하고 상품 보기</span>를 누릅니다.</li>
+        <li>‘찜하는 중’이라고 나오면 <b>누르지 말고 잠깐 기다립니다</b>.</li>
+      </ul>
+      <a href="img/06_unlock.jpg" target="_blank" rel="noopener"><img src="img/06_unlock.jpg" alt="찜하면 열리는 상품 창 가운데의 파란색 찜하고 상품 보기 버튼" loading="lazy"></a>
+      <p class="cap">가운데 파란 버튼이 ‘찜하고 상품 보기’입니다. 맨 아래 ‘할인 목록으로 돌아가기’를 누르면 목록으로 돌아갑니다.</p>
+    </li>
+
+    <li>
+      <h3>버튼 두 개를 모두 눌러 창 두 개 열기</h3>
+      <ul>
+        <li><b>왼쪽 파란 버튼</b> = 우리가 <b>사는 곳</b> (버튼 이름은 상품마다 다릅니다)</li>
+        <li><b>오른쪽 분홍 버튼</b> <span class="btn">네이버 가격비교 보기</span> = 우리가 <b>파는 곳(카탈로그)</b></li>
+      </ul>
+      <p>둘 다 한 번씩 누르면 인터넷 창이 두 개 열립니다. 인터넷 창 <b>맨 위의 탭</b>을 누르면 두 창을 오갈 수 있습니다.</p>
+      <a href="img/07_check.jpg" target="_blank" rel="noopener"><img src="img/07_check.jpg" alt="이 상품 올려보기 창의 왼쪽 파란 버튼(사는 곳)과 오른쪽 분홍 버튼(네이버 가격비교 보기)" loading="lazy"></a>
+      <p class="cap">① 확인 아래에 버튼이 두 개 있습니다. 왼쪽이 사는 곳, 오른쪽이 파는 곳입니다.</p>
+    </li>
+
+    <li>
+      <h3>첫 번째 확인: 같은 상품인가요?</h3>
+      <p>가격은 아직 보지 않습니다. <b>영어와 숫자로 된 모델명</b>만 봅니다.</p>
+      <ul>
+        <li>사는 곳 창에서 모델명을 봅니다. (예: K127)</li>
+        <li>파는 곳(카탈로그) 창에서도 <b>똑같이</b> 적혀 있는지 봅니다.</li>
+        <li>기억이 안 나면 두 창을 왔다 갔다 하며 다시 보면 됩니다.</li>
+      </ul>
+      <p class="careful">모델명이 다르면 올리지 않습니다. X를 눌러 끄고 다른 상품을 고릅니다.</p>
+    </li>
+
+    <li>
+      <h3>두 번째 확인: 돈이 남나요? (마진 계산기)</h3>
+      <p>셀러들의 수다 왼쪽 메뉴에서 <span class="btn">마진 계산기</span>를 누릅니다. (그냥 계산기가 아니라 <b>마진</b> 계산기입니다.) 앞에 적어 둔 숫자가 있으면 지우고 새로 적습니다.</p>
+      <table class="fill">
+        <tr><th>묶음 구매가</th><td><b>사는 곳</b>에 보이는 할인가(쿠폰 적용가)</td></tr>
+        <tr><th>묶음 수량</th><td>1</td></tr>
+        <tr><th>포인트 · 할인</th><td>돌려받는 적립금을 더한 금액. 없으면 비워 둡니다</td></tr>
+        <tr><th>카드 할인</th><td>적지 않습니다</td></tr>
+        <tr><th>한 번에 보낼 개수</th><td>1</td></tr>
+        <tr><th>판매가</th><td><b>카탈로그 최저가에서 10원 뺀 금액</b></td></tr>
+        <tr><th>택배비</th><td>가벼운 상품 3000 · 설치해 주는 큰 가전 0</td></tr>
+        <tr><th>수수료</th><td>건드리지 않습니다</td></tr>
+      </table>
+      <a href="img/10_margin_5000.jpg" target="_blank" rel="noopener"><img src="img/10_margin_5000.jpg" alt="마진 계산기 창: 왼쪽에 얼마에 사오나요, 얼마에 파나요 입력 칸, 오른쪽 위 초록 칸에 1건 순이익" loading="lazy"></a>
+      <p class="cap">왼쪽 칸에 숫자를 적으면 오른쪽 위 <b>초록 칸(1건 순이익)</b>에 남는 돈이 나옵니다. 사진 속 숫자는 예시입니다.</p>
+      <ul>
+        <li>계산기가 가격을 가리면, 계산기 <b>맨 윗줄</b>을 마우스 왼쪽 버튼으로 누른 채 옆으로 끌어 옮깁니다.</li>
+        <li>적립금은 사는 곳에서 <b>‘적립’이라고 적힌 곳을 누르면</b> 보입니다. 카드가 있어야 받는 적립은 넣지 않습니다.</li>
+      </ul>
+      <p class="careful">남는 돈이 마이너스(−)면 올리지 않습니다. X를 눌러 끄고 다른 상품으로 갑니다.</p>
+    </li>
+
+    <li>
+      <h3>돈이 남으면: 카탈로그 창에서 ‘이 카탈로그 담기’</h3>
+      <ul>
+        <li>먼저 <b>파는 곳(카탈로그) 창</b>을 누릅니다. 사진이 왼쪽에, ‘최저 ○○원’이 오른쪽에 있는 화면입니다.</li>
+        <li>인터넷 창 <b>오른쪽 위의 초록색 카메라 모양</b>을 누릅니다.</li>
+        <li>초록색 <span class="btn">이 카탈로그 담기</span>를 <b>한 번</b> 누릅니다.</li>
+        <li>아래 흰 칸에 주소가 한 줄 들어가면 담긴 것입니다.</li>
+      </ul>
+      <a href="img/11_catalog_add.jpg" target="_blank" rel="noopener"><img src="img/11_catalog_add.jpg" alt="네이버 카탈로그 화면 오른쪽에 열린 자동등록 프로그램: 초록색 이 카탈로그 담기 버튼, 담긴 목록, 파란색 대량등록 시작 버튼" loading="lazy"></a>
+      <p class="cap">오른쪽이 자동등록 프로그램입니다. 초록 버튼이 ‘이 카탈로그 담기’, 그 아래 파란 버튼이 ‘대량등록 시작’입니다.</p>
+      <p class="careful">사는 곳 창에서는 아무리 눌러도 담기지 않습니다. 꼭 카탈로그 창에서 누릅니다.</p>
+    </li>
+
+    <li>
+      <h3>다 담았으면: ‘대량등록 시작’ 누르고 기다리기</h3>
+      <ul>
+        <li>파란색 <span class="btn">대량등록 시작</span>을 누릅니다.</li>
+        <li>컴퓨터가 혼자 움직이며 등록합니다. <b>끝날 때까지 컴퓨터를 만지지 않습니다.</b></li>
+        <li>상품 하나에 약 3분 걸립니다. 모래시계가 <b>초록색</b>으로 바뀌면 끝난 것입니다.</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>다음 상품은 2번부터 다시</h3>
+      <p>화면 아래 <span class="btn">할인 목록으로 돌아가기</span>를 누르고 2번부터 똑같이 합니다. 하루에 7개까지 찜할 수 있습니다.</p>
+      <p>순서만 기억하세요. <b>같은 상품인가 → 돈이 남는가 → 남으면 담기.</b></p>
+    </li>
+  </ol>
+
+  <a class="more" href="../../edu-quse/hotdeal-guide/">화면 영상으로 보기 · 오늘의 할인 실습 자료</a>
+  <p class="cap" style="text-align:center;margin-top:8px">영상 자료에는 하루 3개로 나오지만 지금은 하루 7개입니다.</p>
 </section>
 
 <section>
